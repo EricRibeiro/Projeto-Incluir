@@ -48,3 +48,6 @@ local.properties
 .scala_dependencies
 .worksheet
 /target/
+
+# POM Stuff
+pom*
