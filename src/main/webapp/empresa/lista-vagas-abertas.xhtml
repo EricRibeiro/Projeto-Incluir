@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mp="http://primefaces.org/ui/material" template="/template.xhtml">
+
+	<ui:define name="center">
+		<h1>Lista de vagas abertas - Empresa</h1>
+		<h:form>
+			<p:growl id="msgs" showDetail="true" />
+
+			<p:dataTable id="vagasAbertas" var="v" value="#{vagaBean.vagasAbertasPorEmpresa}">
+				<f:facet name="header">
+            		Relação de vagas abertas
+        		</f:facet>
+				<p:column headerText="Id">
+					<h:outputText value="#{v.id}" />
+				</p:column>
+				<p:column headerText="Departamento">
+					<h:outputText value="#{v.departamento}" />
+				</p:column>
+				<p:column headerText="Cargo">
+					<h:outputText value="#{v.cargo}" />
+				</p:column>
+				<p:column headerText="Criacao">
+					<h:outputText value="#{v.dataCriacao}" />
+				</p:column>
+				<p:column headerText="Finalizacao">
+					<h:outputText value="#{v.dataFinalizacao}" />
+				</p:column>
+				<p:column style="width:32px;text-align: center">
+					<p:commandButton action="#{vagaBean.detalhaVaga(v.id)}" icon="ui-icon-search" />
+				</p:column>
+				<p:column style="width:32px;text-align: center">
+					<p:commandButton action="#{vagaBean.finalizar(v.id)}" icon="ui-icon-trash" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>

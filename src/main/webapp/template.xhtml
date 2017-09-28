@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Sistema de Coletas</title>
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css" name="style.css" />
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="100" header="PROJETO INCLUIR"
+			resizable="true" closable="false" collapsible="true">
+			<h:outputText value="PROJETO INCLUIR" />
+
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="200" resizable="true"
+			closable="true" collapsible="true">
+			<h5>Gerenciamento de vagas</h5>
+			<p:link href="/empresa/cadastra-vaga.jsf" value="Cadastrar nova vaga" />
+			<br />
+			<p:link href="/empresa/lista-vagas-abertas.jsf"
+				value="Listar vagas abertas" />
+			<br />
+			<p:link href="/empresa/lista-vagas-finalizadas.jsf"
+				value="Listar vagas finalizadas" />
+			<br />
+			<h5>Administrativo</h5>
+			<p:link href="/empresa/admin-empresa.jsf"
+				value="Painel administrativo" />
+			<br />
+			<p:link href="/empresa/detalhe-empresa.jsf" value="Detalhe empresa" />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<ui:insert name="center">Aqui as coisas acontecem</ui:insert>
+		</p:layoutUnit>
+
+	</p:layout>
+
+</h:body>
+</html>

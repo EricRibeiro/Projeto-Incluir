@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mp="http://primefaces.org/ui/material" template="/template.xhtml">
+	<f:metadata>
+		<f:viewParam id="idVaga" name="idVaga" value="#{vagaBean.idVaga}" />
+		<f:viewAction action="#{vagaBean.findVagaById}" />
+	</f:metadata>
+
+	<ui:define name="center">
+		<h1>Detalhe da vaga</h1>
+		<h:form>
+			<h:form>
+				<div class="row">
+					<div class="col s12 m6">
+						<div class="input-field col s12">
+							<mp:input disabled="true" label="Id" value="#{vagaBean.vaga.id}" />
+						</div>
+						<div class="input-field col s12">
+							<mp:input label="Cargo" value="#{vagaBean.vaga.cargo}" />
+						</div>
+						<div class="input-field col s12">
+							<mp:input label="Departamento"
+								value="#{vagaBean.vaga.departamento}" />
+						</div>
+						<div class="input-field col s12">
+							<mp:input label="Nivel de escolaridade"
+								value="#{vagaBean.vaga.nivelEscolaridade}" />
+						</div>
+						<div class="input-field col s12">
+							<mp:input multiLine="true" label="Descricao"
+								value="#{vagaBean.vaga.descricao}" />
+						</div>
+						<div class="col s12">
+							<p:outputLabel for="" value="Data criação" />
+							<p:calendar id="criacao"
+								value="#{vagaBean.vaga.dataCriacao}" />
+						</div>
+						<div class="col s12">
+							<p:outputLabel for="" value="Data finalização" />
+							<p:calendar id="finalizacao"
+								value="#{vagaBean.vaga.dataFinalizacao}" />
+						</div>
+						<div class="input-field col s12">
+							<mp:input label="Faixa salarial de"
+								value="#{vagaBean.vaga.faixaSalarioMin}" />
+						</div>
+						<div class="input-field col s12">
+							<mp:input label="Faixa salarial até"
+								value="#{vagaBean.vaga.faixaSalarioMax}" />
+						</div>
+					</div>
+				</div>
+				<div class="col s6">
+					<p:commandButton value="Editar" action="#{vagaBean.editar}" />
+				</div>
+			</h:form>
+
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
