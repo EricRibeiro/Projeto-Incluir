@@ -22,8 +22,10 @@ public class VagaDao implements Serializable{
 		manager.persist(vaga);
 	}
 	
-	public void merge(Vaga vaga) {
-		manager.merge(vaga);
+	public Vaga merge(Vaga vaga) {
+		vaga = manager.merge(vaga);
+		return vaga;
+		
 	}
 		
 	public List<Vaga> vagasAbertasPorEmpresa(int id){
