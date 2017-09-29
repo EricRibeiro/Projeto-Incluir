@@ -5,42 +5,62 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Sistema de Coletas</title>
-</h:head>
-<h:body>
-	<h:outputStylesheet library="css" name="style.css" />
-	<p:layout fullPage="true">
-
-		<p:layoutUnit position="north" size="100" header="PROJETO INCLUIR"
-			resizable="true" closable="false" collapsible="true">
-			<h:outputText value="PROJETO INCLUIR" />
-
-		</p:layoutUnit>
-
-		<p:layoutUnit position="west" size="200" resizable="true"
-			closable="true" collapsible="true">
-			<h5>Gerenciamento de vagas</h5>
-			<p:link href="/empresa/cadastra-vaga.jsf" value="Cadastrar nova vaga" />
-			<br />
-			<p:link href="/empresa/lista-vagas-abertas.jsf"
-				value="Listar vagas abertas" />
-			<br />
-			<p:link href="/empresa/lista-vagas-finalizadas.jsf"
-				value="Listar vagas finalizadas" />
-			<br />
-			<h5>Administrativo</h5>
-			<p:link href="/empresa/admin-empresa.jsf"
-				value="Painel administrativo" />
-			<br />
-			<p:link href="/empresa/detalhe-empresa.jsf" value="Detalhe empresa" />
-		</p:layoutUnit>
-
-		<p:layoutUnit position="center">
-			<ui:insert name="center">Aqui as coisas acontecem</ui:insert>
-		</p:layoutUnit>
-
-	</p:layout>
-
-</h:body>
+	
+	<h:head>
+		<title>Sistema de Vagas</title>
+		<h:outputScript library="js" name="materialize.min.js" />
+		<h:outputScript library="js" name="script.js" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+	</h:head>
+	
+	<h:body>
+		<f:facet name="last">
+			<h:outputStylesheet library="css" name="materialize.min.css" />
+			<h:outputStylesheet library="css" name="style.css" />
+			<h:outputScript library="js" name="jquery-3.2.1.min.js" />		
+		</f:facet>
+		
+		<p:layout fullPage="true">
+		
+			<p:layoutUnit position="north" size="85" resizable="false" closable="false" collapsible="false">
+					  <nav class="top-nav">
+					    <div class="nav-wrapper">
+					      <a href="#" class="brand-logo center">Projeto Incluir</a>
+					      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+					    </div>
+					  </nav>
+			</p:layoutUnit>
+	
+			<p:layoutUnit position="west" size="350" resizable="true" closable="true" collapsible="true">
+				
+				 <ul id="slide-out" class="side-nav fixed">
+				 	<li><div class="user-view">
+				      <div class="background">
+				        <h:graphicImage value="../resources/images/material.png" />
+				      </div>
+				     <h:graphicImage class="circle" value="../resources/images/tinyrick.png" />
+				     <span class="white-text name">Good Times Inc.</span>
+				     <span class="white-text email">good@times.com</span>
+				    </div></li>
+				 
+				 	<li><a class="subheader"><i class="material-icons">account_circle</i>Gerência de Vagas</a></li>
+			     	<li><p:link href="/empresa/cadastra-vaga.jsf" value="Cadastrar uma Vaga" /></li>
+			     	<li><p:link href="/empresa/lista-vagas-abertas.jsf" value="Vagas em Aberto" /></li>
+			     	<li><p:link href="/empresa/lista-vagas-finalizadas.jsf" value="Vagas Finalizadas" /></li>
+			     	<li><div class="divider"></div></li>
+			     	<li><a class="subheader"><i class="material-icons">business</i>Administrativo</a></li>
+			     	<li><p:link href="/empresa/admin-empresa.jsf" value="Painel administrativo" /></li>
+			     	<li><p:link href="/empresa/detalhe-empresa.jsf" value="Perfil da Empresa" /></li>
+			    </ul>
+			    
+				
+			</p:layoutUnit>
+	
+			<p:layoutUnit position="center">
+				<ui:insert name="center">Aqui as coisas acontecem</ui:insert>
+			</p:layoutUnit>
+	
+		</p:layout>
+		
+	</h:body>
 </html>

@@ -4,84 +4,92 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:mp="http://primefaces.org/ui/material" template="/template.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
 
 	<ui:define name="center">
-		<h1>Cadastro de empresa</h1>
-		<h:form>
-			<h:form>
-				<div class="row">
-					<div class="col s12 m6">
+		<h4>Preencha com os seus dados:</h4>
+			<div class="row">
+				<h:form class="col s12">
+				
+					<div class="row">
 						<div class="input-field col s12">
-							<mp:input label="Razao social"
-								value="#{empresaBean.empresa.razaoSocial}" />
+							<p:inputText class="validate" value="#{empresaBean.empresa.razaoSocial}" />
+							<label for="RazaoSocial">Razão Social</label>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{empresaBean.empresa.cnpj}" />
+							<label for="CNPJ">CNPJ</label>
 						</div>
 						<div class="input-field col s6">
-							<mp:input label="CNPJ" value="#{empresaBean.empresa.cnpj}" />
+							<p:inputText class="validate" value="#{empresaBean.empresa.ramoAtividade}" />
+							<label for="RamoDeAtividade">Ramo de Atividade</label>
 						</div>
-						<div class="input-field col s6">
-							<mp:input label="Ramo de atividade"
-								value="#{empresaBean.empresa.ramoAtividade}" />
-						</div>
+					</div>
+						
+					<div class="row">
 						<div class="input-field col s12">
-							<mp:input multiLine="true"  label="Breve descricao"
-								value="#{empresaBean.empresa.descricao}" />
-						</div>
-
-
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col s12 m6">
-						<div class="input-field col s6">
-							<mp:input label="Municipio"
-								value="#{empresaBean.empresa.municipio}" />
-						</div>
-						<div class="input-field col s6">
-							<mp:input label="Bairro" value="#{empresaBean.empresa.bairro}" />
-						</div>
-						<div class="input-field col s6">
-							<mp:input label="Logradouro"
-								value="#{empresaBean.empresa.logradouro}" />
-						</div>
-						<div class="input-field col s6">
-							<mp:input label="Numero" value="#{empresaBean.empresa.numero}" />
-						</div>
-						<div class="input-field col s6">
-							<mp:input label="Complemento"
-								value="#{empresaBean.empresa.complemento}" />
-						</div>
-						<div class="input-field col s6">
-							<mp:input label="CEP" value="#{empresaBean.empresa.cep}" />
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="row">
-					<div class="col s12 m6">
-						<div class="input-field col s6">
-							<mp:input label="Login" value="#{empresaBean.empresa.login}" />
-						</div>
-						<div class="input-field col s6">
-							<mp:input label="Senha" type="password"
-								value="#{empresaBean.empresa.senha}" />
+							<p:inputTextarea class="materialize-textarea" value="#{empresaBean.empresa.descricao}" />
+							<label for="Descricao">Descrição</label>
 						</div>
 					</div>
-
-				</div>
-				<div class="col s6">
-					<p:commandButton value="Salvar" action="#{empresaBean.salvar}" />
-				</div>
-			</h:form>
-
-
-		</h:form>
-
-
+					
+					<div class="row">
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{empresaBean.empresa.municipio}" />
+							<label for="Municipio">Município</label>
+						</div>
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{empresaBean.empresa.bairro}" />
+							<label for="Bairro">Bairro</label>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{empresaBean.empresa.logradouro}" />
+							<label for="Logradouro">Logradouro</label>
+						</div>
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{empresaBean.empresa.numero}" />
+							<label for="Numero">Número</label>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{empresaBean.empresa.complemento}" />
+							<label for="Complemento">Complemento</label>
+						</div>
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{empresaBean.empresa.cep}" />
+							<label for="CEP">CEP</label>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{empresaBean.empresa.login}" />
+							<label for="Usuário">Usuário</label>
+						</div>
+						<div class="input-field col s6">
+							<p:inputText class="validate" type="password" value="#{empresaBean.empresa.senha}" />
+							<label for="Senha">Senha</label>
+						</div>
+					</div>
+						
+					
+					<div class="row">
+						<div class="col s12">
+							<p:commandButton class="btn waves-effect waves-light" value="Salvar" action="#{empresaBean.salvar}" />
+						</div>
+					</div>
+					
+				</h:form>
+			</div>
+			
 	</ui:define>
 
 </ui:composition>

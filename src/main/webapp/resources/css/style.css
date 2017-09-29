@@ -1,6 +1,27 @@
-@CHARSET "ISO-8859-1";
-body{
-	font-size: 12px;
-	font-family: sans-serif;
+nav {
+	background-color: #039be5;
 }
 
+.ui-layout-unit .ui-layout-unit-content {
+	padding: 0 !important; 
+}
+
+.ui-layout-unit {
+	padding: 0 !important;
+}
+
+.user-view {
+	font-weight: bold;
+}
+
+.top-nav {
+	width: 100%;
+}
+
+@media screen and (min-width: 1000px) {
+	.top-nav {
+		width: 80%;
+		float: right
+	}
+	
+}
