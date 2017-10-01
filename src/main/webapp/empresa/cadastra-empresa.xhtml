@@ -7,9 +7,22 @@
 	xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
 
 	<ui:define name="center">
-		<h4>Preencha com os seus dados:</h4>
+		<div class="container">
+			<h5>Preencha com os seus dados:</h5>
 			<div class="row">
 				<h:form class="col s12">
+				
+					<div class="row">
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{empresaBean.empresa.login}" />
+							<label for="Usuário">Usuário</label>
+						</div>
+						<div class="input-field col s6">
+							<p:inputText class="validate" type="password" value="#{empresaBean.empresa.senha}" />
+							<label for="Senha">Senha</label>
+						</div>
+					</div>
+						
 				
 					<div class="row">
 						<div class="input-field col s12">
@@ -31,8 +44,9 @@
 						
 					<div class="row">
 						<div class="input-field col s12">
-							<p:inputTextarea class="materialize-textarea" value="#{empresaBean.empresa.descricao}" />
+							<p:inputTextarea id="input_text" class="materialize-textarea" data-length="120" value="#{empresaBean.empresa.descricao}" />
 							<label for="Descricao">Descrição</label>
+							<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
 						</div>
 					</div>
 					
@@ -70,18 +84,6 @@
 					</div>
 					
 					<div class="row">
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.login}" />
-							<label for="Usuário">Usuário</label>
-						</div>
-						<div class="input-field col s6">
-							<p:inputText class="validate" type="password" value="#{empresaBean.empresa.senha}" />
-							<label for="Senha">Senha</label>
-						</div>
-					</div>
-						
-					
-					<div class="row">
 						<div class="col s12">
 							<p:commandButton class="btn waves-effect waves-light" value="Salvar" action="#{empresaBean.salvar}" />
 						</div>
@@ -89,7 +91,7 @@
 					
 				</h:form>
 			</div>
-			
+		</div>
 	</ui:define>
 
 </ui:composition>

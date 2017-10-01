@@ -4,48 +4,63 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:mp="http://primefaces.org/ui/material" template="/template.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
 
 	<ui:define name="center">
-		<h1>Cadastro de vaga</h1>
-		<h:form>
-			<h:form>
-				<div class="row">
-					<div class="col s12 m6">
-						<div class="input-field col s12">
-							<mp:input label="Cargo" value="#{vagaBean.vaga.cargo}" />
+		<div class="container">
+			<h5>Preencha os dados da vaga:</h5>
+			<div class="row">
+				<h:form class="col s12">
+				
+					<div class="row">
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{vagaBean.vaga.cargo}" />
+							<label for="Cargo">Cargo</label>
 						</div>
-						<div class="input-field col s12">
-							<mp:input label="Departamento" value="#{vagaBean.vaga.departamento}" />
-						</div>
-						<div class="input-field col s12">
-							<mp:input label="Nivel de escolaridade" value="#{vagaBean.vaga.nivelEscolaridade}" />
-						</div>
-						<div class="input-field col s12">
-							<mp:input multiLine="true" label="Descricao" value="#{vagaBean.vaga.descricao}" />
-						</div>
-						<div class="col s12">
-							<p:outputLabel value="Data Finalização"/>
-							<p:calendar value="#{vagaBean.vaga.dataFinalizacao}" />
-						</div>
-						<div class="input-field col s12">
-							<mp:input label="Faixa salarial de" value="#{vagaBean.vaga.faixaSalarioMin}" />
-						</div>
-						<div class="input-field col s12">
-							<mp:input label="Faixa salarial até" value="#{vagaBean.vaga.faixaSalarioMax}" />
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{vagaBean.vaga.departamento}" />
+							<label for="Departamento">Departamento</label>
 						</div>
 					</div>
-				</div>
-				<div class="col s6">
-					<p:commandButton value="Salvar" action="#{vagaBean.salvar}" />
-				</div>
-			</h:form>
-
-
-		</h:form>
-
-
+					
+					<div class="row">
+						<div class="input-field col s6">
+							<p:inputText class="validate" value="#{vagaBean.vaga.nivelEscolaridade}" />
+							<label for="NivelDeEscolaridade">Escolaridade</label>
+						</div>
+						<div class="input-field col s6">
+							<p:inputText class="datepicker" value="#{vagaBean.vaga.dataFinalizacao}" />
+							<label for="DataDeFinalizacao">Data de Finalização</label>
+						</div>
+					</div>
+					
+						<div class="row">
+						<div class="input-field col s12">
+							<p:inputTextarea id="input_text" class="materialize-textarea" data-length="120" value="#{empresaBean.empresa.descricao}" />
+							<label for="Descricao">Descrição</label>
+							<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+						</div>
+					</div>
+					
+							
+					<div id="test-slider"></div>		
+							
+<!-- 					<div class="input-field col s12"> -->
+<!-- 						<p:inputText label="Faixa salarial de" value="#{vagaBean.vaga.faixaSalarioMin}" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="input-field col s12"> -->
+<!-- 						<p:inputText label="Faixa salarial até" value="#{vagaBean.vaga.faixaSalarioMax}" /> -->
+<!-- 					</div> -->
+					
+					<div class="row">
+						<div class="col s12">
+							<p:commandButton class="btn waves-effect waves-light" value="Salvar" action="#{vagaBean.salvar}" />
+						</div>
+					</div>
+					
+				</h:form>
+			</div>
+		</div>
 	</ui:define>
 
 </ui:composition>

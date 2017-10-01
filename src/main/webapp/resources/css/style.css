@@ -2,6 +2,14 @@ nav {
 	background-color: #039be5;
 }
 
+#layoutUnit-center {
+	margin-right: 500px;
+}
+
+.brand-logo {
+	font-family: 'Handlee', cursive;
+}
+
 .ui-layout-unit .ui-layout-unit-content {
 	padding: 0 !important; 
 }
@@ -18,10 +26,16 @@ nav {
 	width: 100%;
 }
 
+
+
 @media screen and (min-width: 1000px) {
 	.top-nav {
 		width: 80%;
 		float: right
+	}
+	
+	.container {
+/* 		margin-left: 25%;  */
 	}
 	
 }
