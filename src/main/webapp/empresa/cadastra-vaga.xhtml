@@ -34,17 +34,25 @@
 						</div>
 					</div>
 					
-						<div class="row">
+                    <div class="row">
 						<div class="input-field col s12">
 							<p:inputTextarea id="input_text" class="materialize-textarea" data-length="120" value="#{empresaBean.empresa.descricao}" />
 							<label for="Descricao">Descrição</label>
 							<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
 						</div>
 					</div>
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMin}" />
+                            <label for="FaixaSalarialMin">Faixa salarial de:</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMax}" />
+                            <label for="FaixaSalarialMax">Faixa salarial até:</label>
+                        </div>
+                    </div>
 					
-							
-					<div id="test-slider"></div>		
-							
 <!-- 					<div class="input-field col s12"> -->
 <!-- 						<p:inputText label="Faixa salarial de" value="#{vagaBean.vaga.faixaSalarioMin}" /> -->
 <!-- 					</div> -->
