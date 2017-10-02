@@ -1,41 +1,43 @@
-nav {
-	background-color: #039be5;
+body {
+    background-color: #fcfcfc;
 }
 
-#layoutUnit-center {
-	margin-right: 500px;
+nav {
+    background-color: #039be5;
+    margin-bottom: 2.5%;
+    width: 100%;
+}
+
+nav .nav-wrapper {
+    height: 100%;
+}
+
+nav .top-nav {
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 .brand-logo {
 	font-family: 'Handlee', cursive;
+    font-size: 2.1rem !important;
 }
 
-.ui-layout-unit .ui-layout-unit-content {
-	padding: 0 !important; 
-}
-
-.ui-layout-unit {
-	padding: 0 !important;
+.container {
+    padding-left: 300px;
 }
 
 .user-view {
 	font-weight: bold;
 }
 
-.top-nav {
-	width: 100%;
-}
+@media only screen and (max-width : 992px) {
 
+    .brand-logo {
+        font-size: 1.5rem !important;
+        font-weight: bold;
+    }
 
-
-@media screen and (min-width: 1000px) {
-	.top-nav {
-		width: 80%;
-		float: right
-	}
-	
-	.container {
-/* 		margin-left: 25%;  */
-	}
-	
+    .container {
+        padding-left: 0px;
+    }
 }

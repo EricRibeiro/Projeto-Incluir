@@ -5,10 +5,13 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 	<h:head>
 		<title>Sistema de Vagas</title>
 		<f:facet name="first">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 			<h:outputStylesheet library="css" name="materialize.min.css" />
 			<h:outputStylesheet library="css" name="nouislider.css" />
 			<h:outputStylesheet library="css" name="style.css" />
@@ -16,54 +19,49 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet" />
 	</h:head>
-	
+
 	<h:body>
 
-		<p:layout fullPage="true">
-		
-			<p:layoutUnit position="north" size="65" resizable="false" closable="false" collapsible="false">
-			  <nav class="top-nav">
-			    <div class="nav-wrapper">
-			      <a href="#" class="brand-logo center">Projeto Incluir</a>
-			      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-			    </div>
-			  </nav>
-			</p:layoutUnit>
-	
-			<p:layoutUnit position="west" size="310" resizable="false" closable="false" collapsible="false">
-				
-				 <ul id="slide-out" class="side-nav fixed">
-				 	<li><div class="user-view">
-				      <div class="background">
-				        <h:graphicImage value="../resources/images/material.png" />
-				      </div>
-				     <h:graphicImage class="circle" value="../resources/images/tinyrick.png" />
-				     <span class="white-text name">Good Times Inc.</span>
-				     <span class="white-text email">good@times.com</span>
-				    </div></li>
-				 
-				 	<li><a class="subheader"><i class="material-icons">account_circle</i>Gerência de Vagas</a></li>
-			     	<li><p:link href="/empresa/cadastra-vaga.jsf" value="Cadastrar uma Vaga" /></li>
-			     	<li><p:link href="/empresa/lista-vagas-abertas.jsf" value="Vagas em Aberto" /></li>
-			     	<li><p:link href="/empresa/lista-vagas-finalizadas.jsf" value="Vagas Finalizadas" /></li>
-			     	<li><div class="divider"></div></li>
-			     	<li><a class="subheader"><i class="material-icons">business</i>Administrativo</a></li>
-			     	<li><p:link href="/empresa/admin-empresa.jsf" value="Painel" /></li>
-			     	<li><p:link href="/empresa/detalhe-empresa.jsf" value="Perfil da Empresa" /></li>
-			    </ul>
-			    
-				
-			</p:layoutUnit>
-	
-			<p:layoutUnit position="center" resizable="false" closable="false" collapsible="false">
-				<ui:insert name="center">Aqui as coisas acontecem</ui:insert>
-			</p:layoutUnit>
-	
-		</p:layout>
-		
+        <nav class="top-nav">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo center">Projeto Incluir</a>
+                </div>
+            </div>
+        <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+        </nav>
+
+        <aside>
+            <ul id="slide-out" class="side-nav fixed">
+                <li><div class="user-view">
+                    <div class="background">
+                        <h:graphicImage value="../resources/images/material.png" />
+                    </div>
+                    <h:graphicImage class="circle" value="../resources/images/tinyrick.png" />
+                    <span class="white-text name">Good Times Inc.</span>
+                    <span class="white-text email">good@times.com</span>
+                </div></li>
+
+                <li><a class="subheader"><i class="material-icons">account_circle</i>Gerência de Vagas</a></li>
+                <li><p:link href="/empresa/cadastra-vaga.jsf" value="Cadastrar uma Vaga" /></li>
+                <li><p:link href="/empresa/lista-vagas-abertas.jsf" value="Vagas em Aberto" /></li>
+                <li><p:link href="/empresa/lista-vagas-finalizadas.jsf" value="Vagas Finalizadas" /></li>
+                <li><div class="divider"></div></li>
+                <li><a class="subheader"><i class="material-icons">business</i>Administrativo</a></li>
+                <li><p:link href="/empresa/admin-empresa.jsf" value="Painel" /></li>
+                <li><p:link href="/empresa/detalhe-empresa.jsf" value="Perfil da Empresa" /></li>
+            </ul>
+        </aside>
+
+        <section>
+            <div class="container">
+                <ui:insert name="center">Aqui as coisas acontecem</ui:insert>
+            </div>
+        </section>
+
 		<h:outputScript library="js" name="materialize.min.js" />
 		<h:outputScript library="js" name="nouislider.js" />
-		<h:outputScript library="js" name="script.js" />	
-		
+		<h:outputScript library="js" name="script.js" />
+
 	</h:body>
 </html>

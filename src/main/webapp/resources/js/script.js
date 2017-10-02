@@ -2,6 +2,7 @@ jQuery(function ($) {
     countCharInTextArea();
     datePicker();
     hideEmptySalaryRange();
+    sideNavConfig();
 });
 
 function countCharInTextArea() {
@@ -29,7 +30,8 @@ function datePicker()   {
         today: 'Hoje',
         clear: 'Limpar',
         close: 'Ok',
-        closeOnSelect: false // Close upon selecting a date,
+        closeOnSelect: false, // Close upon selecting a date,
+        format: 'dd-mm-yyyy'
     });
 };
 
@@ -55,10 +57,10 @@ function hideEmptySalaryRange() {
         $('.salaryRange').val("");
 };
 
-function sideNav() {
+function sideNavConfig() {
     $('.button-collapse').sideNav({
             menuWidth: 300,
-            edge: 'right',
+            edge: 'left',
             closeOnClick: true,
             draggable: true,
             onOpen: function(el) {},

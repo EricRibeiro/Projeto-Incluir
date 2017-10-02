@@ -7,91 +7,90 @@
 	xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
 
 	<ui:define name="center">
-		<div class="container">
-			<h5>Preencha com os seus dados:</h5>
-			<div class="row">
-				<h:form class="col s12">
-				
-					<div class="row">
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.login}" />
-							<label for="Usuário">Usuário</label>
-						</div>
-						<div class="input-field col s6">
-							<p:inputText class="validate" type="password" value="#{empresaBean.empresa.senha}" />
-							<label for="Senha">Senha</label>
-						</div>
-					</div>
-						
-				
-					<div class="row">
-						<div class="input-field col s12">
-							<p:inputText class="validate" value="#{empresaBean.empresa.razaoSocial}" />
-							<label for="RazaoSocial">Razão Social</label>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.cnpj}" />
-							<label for="CNPJ">CNPJ</label>
-						</div>
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.ramoAtividade}" />
-							<label for="RamoDeAtividade">Ramo de Atividade</label>
-						</div>
-					</div>
-						
-					<div class="row">
-						<div class="input-field col s12">
-							<p:inputTextarea id="input_text" class="materialize-textarea" data-length="120" value="#{empresaBean.empresa.descricao}" />
-							<label for="Descricao">Descrição</label>
-							<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.municipio}" />
-							<label for="Municipio">Município</label>
-						</div>
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.bairro}" />
-							<label for="Bairro">Bairro</label>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.logradouro}" />
-							<label for="Logradouro">Logradouro</label>
-						</div>
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.numero}" />
-							<label for="Numero">Número</label>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.complemento}" />
-							<label for="Complemento">Complemento</label>
-						</div>
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{empresaBean.empresa.cep}" />
-							<label for="CEP">CEP</label>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col s12">
-							<p:commandButton class="btn waves-effect waves-light" value="Salvar" action="#{empresaBean.salvar}" />
-						</div>
-					</div>
-					
-				</h:form>
-			</div>
-		</div>
+        <h5 class="center-align">Insira os seus dados</h5>
+        <div class="row">
+
+            <h:form class="col s12">
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.login}" />
+                        <label for="Usuário">Usuário</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" type="password" value="#{empresaBean.empresa.senha}" />
+                        <label for="Senha">Senha</label>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s12 m12 l12 xl12">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.razaoSocial}" />
+                        <label for="RazaoSocial">Razão Social</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.cnpj}" />
+                        <label for="CNPJ">CNPJ</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.ramoAtividade}" />
+                        <label for="RamoDeAtividade">Ramo de Atividade</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m12 l12 xl12">
+                        <p:inputTextarea id="input_text" class="materialize-textarea" data-length="120" value="#{empresaBean.empresa.descricao}" />
+                        <label for="Descricao">Descrição</label>
+                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.municipio}" />
+                        <label for="Municipio">Município</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.bairro}" />
+                        <label for="Bairro">Bairro</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.logradouro}" />
+                        <label for="Logradouro">Logradouro</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.numero}" />
+                        <label for="Numero">Número</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.complemento}" />
+                        <label for="Complemento">Complemento</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{empresaBean.empresa.cep}" />
+                        <label for="CEP">CEP</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 m12 l12 xl12">
+                        <p:commandButton class="btn waves-effect waves-light" value="Salvar" action="#{empresaBean.salvar}" />
+                    </div>
+                </div>
+
+            </h:form>
+        </div>
 	</ui:define>
 
 </ui:composition>

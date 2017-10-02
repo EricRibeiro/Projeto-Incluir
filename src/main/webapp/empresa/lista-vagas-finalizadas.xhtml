@@ -8,36 +8,42 @@
 	xmlns:mp="http://primefaces.org/ui/material" template="/template.xhtml">
 
 	<ui:define name="center">
-		<h1>Lista de vagas abertas - Empresa</h1>
-		<h:form>
-			<p:growl id="msgs" showDetail="true" />
+		<h5 class="center-align">Vagas Finalizadas</h5>
+        <table class="striped centered responsive-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Departamento</th>
+                    <th>Cargo</th>
+                    <th>Data de Criação</th>
+                    <th>Data de Finalização</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
 
-			<p:dataTable id="vagasAbertas" var="v" value="#{vagaBean.vagasFinalizadasPorEmpresa}">
-				<f:facet name="header">
-            		Relação de vagas abertas
-        		</f:facet>
-				<p:column headerText="Id">
-					<h:outputText value="#{v.id}" />
-				</p:column>
-				<p:column headerText="Departamento">
-					<h:outputText value="#{v.departamento}" />
-				</p:column>
-				<p:column headerText="Cargo">
-					<h:outputText value="#{v.cargo}" />
-				</p:column>
-				<p:column headerText="Criacao">
-					<h:outputText value="#{v.dataCriacao}" />
-				</p:column>
-				<p:column headerText="Finalizacao">
-					<h:outputText value="#{v.dataFinalizacao}" />
-				</p:column>
-				<p:column style="width:32px;text-align: center">
-					<p:commandButton value="detalhar" action="#{vagaBean.detalhaVaga(v.id)}" />
-				</p:column>
-			</p:dataTable>
-		</h:form>
-
-
+            <tbody>
+                <ui:repeat value="#{vagaBean.vagasFinalizadasPorEmpresa}" var="vaga">
+                    <tr>
+                        <td>#{vaga.id}</td>
+                        <td>#{vaga.departamento}</td>
+                        <td>#{vaga.cargo}</td>
+                        <td>
+                            <h:outputText value="#{vaga.dataCriacao}">
+                                <f:convertDateTime pattern = "dd-MM-yyyy" />
+                            </h:outputText>
+                        </td>
+                        <td>
+                            <h:outputText value="#{vaga.dataFinalizacao}">
+                                <f:convertDateTime pattern = "dd-MM-yyyy" />
+                            </h:outputText>
+                        </td>
+                        <td>
+                            <p:commandButton class="btn waves-effect waves-light material-icons" value="details" action="#{vagaBean.detalhaVaga(vaga.id)}" />
+                        </td>
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
 	</ui:define>
 
 </ui:composition>

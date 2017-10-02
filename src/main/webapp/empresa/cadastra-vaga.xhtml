@@ -7,68 +7,65 @@
 	xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
 
 	<ui:define name="center">
-		<div class="container">
-			<h5>Preencha os dados da vaga:</h5>
-			<div class="row">
-				<h:form class="col s12">
-				
-					<div class="row">
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{vagaBean.vaga.cargo}" />
-							<label for="Cargo">Cargo</label>
-						</div>
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{vagaBean.vaga.departamento}" />
-							<label for="Departamento">Departamento</label>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="input-field col s6">
-							<p:inputText class="validate" value="#{vagaBean.vaga.nivelEscolaridade}" />
-							<label for="NivelDeEscolaridade">Escolaridade</label>
-						</div>
-						<div class="input-field col s6">
-							<p:inputText class="datepicker" value="#{vagaBean.vaga.dataFinalizacao}" />
-							<label for="DataDeFinalizacao">Data de Finalização</label>
-						</div>
-					</div>
-					
-                    <div class="row">
-						<div class="input-field col s12">
-							<p:inputTextarea id="input_text" class="materialize-textarea" data-length="120" value="#{empresaBean.empresa.descricao}" />
-							<label for="Descricao">Descrição</label>
-							<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
-						</div>
-					</div>
+        <h5 class="center-align">Preencha os dados da vaga:</h5>
+        <div class="row">
+            <h:form class="col s12">
 
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMin}" />
-                            <label for="FaixaSalarialMin">Faixa salarial de:</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMax}" />
-                            <label for="FaixaSalarialMax">Faixa salarial até:</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l12 xl12">
+                        <p:inputText class="validate" value="#{vagaBean.vaga.cargo}" />
+                        <label for="Cargo">Cargo</label>
                     </div>
-					
-<!-- 					<div class="input-field col s12"> -->
-<!-- 						<p:inputText label="Faixa salarial de" value="#{vagaBean.vaga.faixaSalarioMin}" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="input-field col s12"> -->
-<!-- 						<p:inputText label="Faixa salarial até" value="#{vagaBean.vaga.faixaSalarioMax}" /> -->
-<!-- 					</div> -->
-					
-					<div class="row">
-						<div class="col s12">
-							<p:commandButton class="btn waves-effect waves-light" value="Salvar" action="#{vagaBean.salvar}" />
-						</div>
-					</div>
-					
-				</h:form>
-			</div>
-		</div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m12 l12 xl12">
+                        <p:inputText class="validate" value="#{vagaBean.vaga.departamento}" />
+                        <label for="Departamento">Departamento</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" value="#{vagaBean.vaga.nivelEscolaridade}" />
+                        <label for="NivelDeEscolaridade">Nível de Escolaridade</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <h:inputText type="date" class="datepicker" value="#{vagaBean.vaga.dataFinalizacao}">
+                            <f:convertDateTime pattern = "dd-MM-yyyy" />
+                        </h:inputText>
+                        <label for="DataDeFinalizacao">Data de Finalização</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m12 l12 xl12">
+                        <p:inputTextarea id="input_text" class="materialize-textarea" data-length="120" value="#{vagaBean.vaga.descricao}" />
+                        <label for="Descricao">Descrição</label>
+                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMin}" />
+                        <label for="FaixaSalarialMin">Faixa salarial de:</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMax}" />
+                        <label for="FaixaSalarialMax">Faixa salarial até:</label>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col s12">
+                        <p:commandButton class="btn waves-effect waves-light" value="Salvar" action="#{vagaBean.salvar}" />
+                    </div>
+                </div>
+
+            </h:form>
+        </div>
 	</ui:define>
 
 </ui:composition>
