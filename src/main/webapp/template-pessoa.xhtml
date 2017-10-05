@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Sistema de Vagas</title>
+		<f:facet name="first">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<h:outputStylesheet library="css" name="materialize.min.css" />
+			<h:outputStylesheet library="css" name="nouislider.css" />
+			<h:outputStylesheet library="css" name="style.css" />
+		</f:facet>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet" />
+	</h:head>
+
+	<h:body>
+
+        <nav class="top-nav">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo center">Projeto Incluir</a>
+                </div>
+            </div>
+        <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+        </nav>
+
+        <aside>
+            <ul id="slide-out" class="side-nav fixed">
+                <li><div class="user-view">
+                    <div class="background">
+                        <h:graphicImage value="../resources/images/material.png" />
+                    </div>
+                    <h:graphicImage class="circle" value="../resources/images/tinyrick.png" />
+                    <span class="white-text name">Ricardão</span>
+                    <span class="white-text email">rica@rdão.com</span>
+                </div></li>
+
+                <li><a class="subheader"><i class="material-icons">account_circle</i>Vagas</a></li>
+                <li><p:link href="/pessoa/lista-vagas-pessoa.jsf" value="Lista de Vagas" /></li>
+                <li><div class="divider"></div></li>
+                <li><a class="subheader"><i class="material-icons">business</i>Administrativo</a></li>
+                <li><p:link href="/pessoa/admin-pessoa.jsf" value="Painel" /></li>
+                <li><p:link href="/pessoa/detalhe-pessoa.jsf" value="Meu Perfil" /></li>
+            </ul>
+        </aside>
+
+        <section>
+            <div class="container">
+                <ui:insert name="center">Aqui as coisas acontecem</ui:insert>
+            </div>
+        </section>
+
+		<h:outputScript library="js" name="materialize.min.js" />
+		<h:outputScript library="js" name="nouislider.js" />
+		<h:outputScript library="js" name="script.js" />
+
+	</h:body>
+</html>
