@@ -57,6 +57,13 @@ public class VagaBean{
 	}
 	
 	@Transactional
+	public List<Vaga> getVagasAbertasPessoa(){
+		//Empresa empresa = new Empresa();
+		//empresa = loginEmpresaBean.getEmpresa();
+		return vagaDao.vagasAbertasPessoa();
+	}
+	
+	@Transactional
 	public List<Vaga> getVagasFinalizadasPorEmpresa(){
 		//Empresa empresa = new Empresa();
 		//empresa = loginEmpresaBean.getEmpresa();

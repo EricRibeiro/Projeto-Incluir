@@ -30,6 +30,10 @@ public class VagaDao implements Serializable{
 	public List<Vaga> vagasAbertasPorEmpresa(int id){
 		return manager.createQuery("select v from Vaga v where v.empresa.id = :id and v.status = 'ABERTA'",Vaga.class).setParameter("id", id).getResultList();
 	}
+
+	public List<Vaga> vagasAbertasPessoa(){
+		return manager.createQuery("select v from Vaga v where v.status = 'ABERTA'",Vaga.class).getResultList();
+	}
 	
 	public Vaga findVagaById(int id){
 		return manager.createQuery("select v from Vaga v where v.id = :id",Vaga.class).setParameter("id", id).getSingleResult();
@@ -39,6 +43,7 @@ public class VagaDao implements Serializable{
 		return manager.createQuery("select v from Vaga v where v.empresa.id = :id and v.status = 'FINALIZADA'",Vaga.class).setParameter("id", id).getResultList();
 	}
 
+	
 	
 	
 }
