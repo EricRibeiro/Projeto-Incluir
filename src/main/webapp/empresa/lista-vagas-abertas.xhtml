@@ -8,46 +8,48 @@
 
 	<ui:define name="center">
 		<h5 class="center-align">Vagas em Aberto</h5>
-        <table class="striped centered responsive-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Departamento</th>
-                    <th>Cargo</th>
-                    <th>Data de Criação</th>
-                    <th>Data de Finalização</th>
-                    <th>Detalhes</th>
-                    <th>Finalizar</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <ui:repeat value="#{vagaBean.vagasAbertasPorEmpresa}" var="vaga">
+        <h:form>
+            <table class="striped centered responsive-table">
+                <thead>
                     <tr>
-                        <td>#{vaga.id}</td>
-                        <td>#{vaga.departamento}</td>
-                        <td>#{vaga.cargo}</td>
-                        <td>
-                            <h:outputText value="#{vaga.dataCriacao}">
-                                <f:convertDateTime pattern = "dd-MM-yyyy" />
-                            </h:outputText>
-                        </td>
-                        <td>
-                            <h:outputText value="#{vaga.dataFinalizacao}">
-                                <f:convertDateTime pattern = "dd-MM-yyyy" />
-                            </h:outputText>
-                        </td>
-
-                        <td>
-                            <p:commandButton class="btn waves-effect waves-light material-icons" value="details" action="#{vagaBean.detalhaVaga(vaga.id)}" />
-                        </td>
-                        <td>
-                            <p:commandButton class="btn waves-effect waves-light material-icons" value="remove" action="#{vagaBean.finalizar(vaga.id)}" />
-                        </td>
+                        <th>ID</th>
+                        <th>Departamento</th>
+                        <th>Cargo</th>
+                        <th>Data de Criação</th>
+                        <th>Data de Finalização</th>
+                        <th>Detalhes</th>
+                        <th>Finalizar</th>
                     </tr>
-                </ui:repeat>
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                    <ui:repeat value="#{vagaBean.vagasAbertasPorEmpresa}" var="vaga">
+                        <tr>
+                            <td>#{vaga.id}</td>
+                            <td>#{vaga.departamento}</td>
+                            <td>#{vaga.cargo}</td>
+                            <td>
+                                <h:outputText value="#{vaga.dataCriacao}">
+                                    <f:convertDateTime pattern = "dd-MM-yyyy" />
+                                </h:outputText>
+                            </td>
+                            <td>
+                                <h:outputText value="#{vaga.dataFinalizacao}">
+                                    <f:convertDateTime pattern = "dd-MM-yyyy" />
+                                </h:outputText>
+                            </td>
+
+                            <td>
+                                <p:commandButton class="btn waves-effect waves-light material-icons" value="details" action="#{vagaBean.detalhaVaga(vaga.id)}" />
+                            </td>
+                            <td>
+                                <p:commandButton class="btn waves-effect waves-light material-icons" value="remove" action="#{vagaBean.finalizar(vaga.id)}" />
+                            </td>
+                        </tr>
+                    </ui:repeat>
+                </tbody>
+            </table>
+        </h:form>
 	</ui:define>
 
 </ui:composition>

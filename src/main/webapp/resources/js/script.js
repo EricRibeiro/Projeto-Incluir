@@ -1,9 +1,18 @@
 jQuery(function ($) {
+    adjustExpirationDate();
     countCharInTextArea();
     datePicker();
     hideEmptySalaryRange();
     sideNavConfig();
 });
+
+function adjustExpirationDate() {
+    $("input[id*='date-materialize']").val($("input[id*='date-prime']").val());
+
+    $("input[id*='date-materialize']").change(function () {
+        $("input[id*='date-prime']").val(($(this).val()));
+    })
+}
 
 function countCharInTextArea() {
     $('textarea').keyup(function () {

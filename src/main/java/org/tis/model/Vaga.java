@@ -24,9 +24,9 @@ public class Vaga implements Serializable{
 	private String departamento;
 	private String nivelEscolaridade;
 	private String descricao;
-	private String status;
-	
-	@Temporal(TemporalType.DATE)
+    private String status;
+
+    @Temporal(TemporalType.DATE)
 	private Date dataCriacao;
 	@Temporal(TemporalType.DATE)
 	private Date dataFinalizacao;
@@ -101,5 +101,4 @@ public class Vaga implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
 }

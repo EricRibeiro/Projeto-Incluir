@@ -35,10 +35,9 @@ public class VagaBean{
 	}
 	
 	@Transactional
-	public String editar(int id){
-		vaga.setId(id);
-		vaga.setEmpresa(loginEmpresaBean.getEmpresa());
-		vagaDao.merge(vaga);
+	public String editar() {
+        vaga.setEmpresa(loginEmpresaBean.getEmpresa());
+        vagaDao.merge(vaga);
 		return "/empresa/lista-vagas-abertas?faces-redirect=true";
 	}
 	
@@ -47,7 +46,6 @@ public class VagaBean{
 		this.vaga = vagaDao.findVagaById(id);
 		this.vaga.setStatus("FINALIZADA");
 		vagaDao.merge(vaga);
-		
 		return "/empresa/lista-vagas-abertas?faces-redirect=true";
 	}
 	

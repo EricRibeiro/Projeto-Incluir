@@ -9,7 +9,7 @@
 	<ui:define name="center">
         <h5 class="center-align">Preencha os dados da vaga:</h5>
         <div class="row">
-            <h:form class="col s12">
+            <h:form id="form" class="corel s12 m12 l12 xl12">
 
                 <div class="row">
                     <div class="input-field col s12 m12 l12 xl12">
@@ -31,9 +31,11 @@
                         <label for="NivelDeEscolaridade">Nível de Escolaridade</label>
                     </div>
                     <div class="input-field col s12 m6 l6 xl6">
-                        <h:inputText type="date" class="datepicker" value="#{vagaBean.vaga.dataFinalizacao}">
-                            <f:convertDateTime pattern = "dd-MM-yyyy" />
-                        </h:inputText>
+                        <h:inputText type="date" id="date-materialize" class="datepicker" />
+
+                        <!--Campo escondido para que o JSF capture o valor da data de criação-->
+                        <p:calendar type="date" id="date-prime" pattern="dd-MM-yyyy" style="display: none;" value="#{vagaBean.vaga.dataFinalizacao}"/>
+
                         <label for="DataDeFinalizacao">Data de Finalização</label>
                     </div>
                 </div>
