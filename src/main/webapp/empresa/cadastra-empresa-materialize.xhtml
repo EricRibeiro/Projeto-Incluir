@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Projeto Incluir</title>
+    <f:facet name="first">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <h:outputStylesheet library="css" name="materialize.min.css"/>
+        <h:outputStylesheet library="css" name="form.css"/>
+    </f:facet>
+</h:head>
+
+<h:body>
+
+    <main class="center-align">
+        <br />
+        <h5 class="center-align blue-text">Insira os seus dados</h5>
+        <br />
+        <div class="container">
+            <div class="z-depth-1 grey lighten-4 row"
+                 style="display: inline-block; padding: 82px 78px 52px 78px; border: 1px solid #EEE;">
+                <div class="row">
+
+                    <h:form class="col s12 m12 l12 xl12">
+
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.login}" required="true"/>
+                                <label for="Usuário">Usuário</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" type="password" value="#{empresaBean.empresa.senha}"
+                                             required="true"/>
+                                <label for="Senha">Senha</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.email}"
+                                             required="true"/>
+                                <label for="Email">Email</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.razaoSocial}"
+                                             required="true"/>
+                                <label for="RazaoSocial">Razão Social</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.cnpj}" required="true"/>
+                                <label for="CNPJ">CNPJ</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.ramoAtividade}"
+                                             required="true"/>
+                                <label for="RamoDeAtividade">Ramo de Atividade</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <p:inputTextarea id="input_text" class="validate materialize-textarea" data-length="120"
+                                                 value="#{empresaBean.empresa.descricao}" required="true"/>
+                                <label for="Descricao">Descrição</label>
+                                <span class="character-counter"
+                                      style="float: right; font-size: 12px; height: 1px;"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.municipio}" required="true"/>
+                                <label for="Municipio">Município</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.bairro}" required="true"/>
+                                <label for="Bairro">Bairro</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.logradouro}"
+                                             required="true"/>
+                                <label for="Logradouro">Logradouro</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.numero}" required="true"/>
+                                <label for="Numero">Número</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.complemento}"/>
+                                <label for="Complemento">Complemento</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.cep}" required="true"/>
+                                <label for="CEP">CEP</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 m12 l12 xl12">
+                                <p:commandButton class="col s12 btn btn-large waves-effect waves-light blue" value="Salvar"
+                                                 action="#{empresaBean.salvar}"/>
+                            </div>
+                        </div>
+
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <h:outputScript library="js" name="materialize.min.js"/>
+    <h:outputScript library="js" name="script.js"/>
+
+</h:body>
+</html>

@@ -1,38 +1,61 @@
 jQuery(function ($) {
-    adjustExpirationDate();
-    countCharInTextArea();
-    datePicker();
-    hideEmptySalaryRange();
+    onLoadHideEmptySalaryRange();
+    onLoadAddRequiredAttr();
     sideNavConfig();
+    onChangeAdjustExpirationDate();
+    onKeyupCountCharInTextArea();
+    datePicker();
+    onBtnClickShowInvalidFields();
 });
 
-function adjustExpirationDate() {
-    $("input[id*='date-materialize']").val($("input[id*='date-prime']").val());
+function onBtnClickShowInvalidFields() {
+    $('button').click(function () {
+        $('[aria-required="true"]').filter(function () {
+            return !this.value;
+        }).addClass('invalid');
+    });
+}
 
-    $("input[id*='date-materialize']").change(function () {
-        $("input[id*='date-prime']").val(($(this).val()));
+function onLoadAddRequiredAttr() {
+    $('[aria-required="true"]').attr('required', "");
+}
+
+function onChangeAdjustExpirationDate() {
+    var $dateMaterialize = $("input[id*='date-materialize']");
+    var $datePrime = $("input[id*='date-prime']");
+
+    $dateMaterialize.val($datePrime.val());
+
+    $dateMaterialize.change(function () {
+        $datePrime.val(($(this).val()));
+        $dateMaterialize
+            .removeClass('invalid')
+            .addClass('valid');
     })
 }
 
-function countCharInTextArea() {
-    $('textarea').keyup(function () {
+function onKeyupCountCharInTextArea() {
+    var $characterCounter = $('.character-counter');
+    var $textArea = $('textarea');
+
+    $textArea.keyup(function () {
         var maxLength = 120;
         var length = $(this).val().length;
         var length = maxLength - length;
-        $('.character-counter').text(length + "/" + maxLength);
+        $characterCounter.text(length + "/" + maxLength);
     });
 
-    $('textarea').focus(function () {
-        $('.character-counter').show();
+    $textArea.focus(function () {
+        $characterCounter.show();
 
     });
 
-    $('textarea').blur(function () {
-        $('.character-counter').hide();
+    $textArea.blur(function () {
+        $characterCounter.hide();
     });
 };
 
-function datePicker()   {
+function datePicker() {
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 5, // Creates a dropdown of 5 years to control year,
@@ -44,26 +67,10 @@ function datePicker()   {
     });
 };
 
-function slider() {
-    var slider = document.getElementById('test-slider');
-    noUiSlider.create(slider, {
-        start: [20, 80],
-        connect: true,
-        step: 1,
-        orientation: 'horizontal', // 'horizontal' or 'vertical'
-        range: {
-            'min': 0,
-            'max': 100
-        },
-        format: wNumb({
-            decimals: 0
-        })
-    });
-}
-
-function hideEmptySalaryRange() {
-    if ($('.salaryRange').val() == 0.0)
-        $('.salaryRange').val("");
+function onLoadHideEmptySalaryRange() {
+    var $salaryRange = $('.salaryRange');
+    if ($salaryRange.val() == 0.0)
+        $salaryRange.val("");
 };
 
 function sideNavConfig() {
@@ -72,8 +79,10 @@ function sideNavConfig() {
             edge: 'left',
             closeOnClick: true,
             draggable: true,
-            onOpen: function(el) {},
-            onClose: function(el) {},
+            onOpen: function (el) {
+            },
+            onClose: function (el) {
+            },
         }
     );
 };

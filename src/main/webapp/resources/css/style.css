@@ -2,6 +2,11 @@ body {
     background-color: #fcfcfc;
 }
 
+h5 {
+    margin-top: 5% !important;
+    margin-bottom: 10% !important;
+}
+
 nav {
     background-color: #039be5;
     margin-bottom: 2.5%;
@@ -18,7 +23,7 @@ nav .top-nav {
 }
 
 .brand-logo {
-	font-family: 'Handlee', cursive;
+    font-family: 'Handlee', cursive;
     font-size: 2.1rem !important;
 }
 
@@ -27,10 +32,15 @@ nav .top-nav {
 }
 
 .user-view {
-	font-weight: bold;
+    font-weight: bold;
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
+
+    h5 {
+        margin-top: 10% !important;
+        margin-bottom: 10% !important;
+    }
 
     .brand-logo {
         font-size: 1.5rem !important;

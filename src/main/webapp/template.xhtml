@@ -7,13 +7,12 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
-		<title>Sistema de Vagas</title>
+		<title>Projeto Incluir</title>
 		<f:facet name="first">
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 			<h:outputStylesheet library="css" name="materialize.min.css" />
-			<h:outputStylesheet library="css" name="nouislider.css" />
 			<h:outputStylesheet library="css" name="style.css" />
 		</f:facet>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -38,8 +37,8 @@
                         <h:graphicImage value="../resources/images/material.png" />
                     </div>
                     <h:graphicImage class="circle" value="../resources/images/tinyrick.png" />
-                    <span class="white-text name">Good Times Inc.</span>
-                    <span class="white-text email">good@times.com</span>
+                    <span class="white-text name">#{loginEmpresaBean.empresa.razaoSocial}</span>
+                    <span class="white-text email">#{loginEmpresaBean.empresa.email}</span>
                 </div></li>
 
                 <li><a class="subheader"><i class="material-icons">account_circle</i>Gerência de Vagas</a></li>
@@ -49,7 +48,9 @@
                 <li><div class="divider"></div></li>
                 <li><a class="subheader"><i class="material-icons">business</i>Administrativo</a></li>
                 <li><p:link href="/empresa/admin-empresa.jsf" value="Painel" /></li>
-                <li><p:link href="/empresa/detalhe-empresa.jsf" value="Perfil da Empresa" /></li>
+                <li><p:link href="/empresa/detalhe-empresa.jsf" value="Meu Perfil" /></li>
+                <li><div class="divider"></div></li>
+                <li><p:link href="../index.xhtml" value="Sair"/></li>
             </ul>
         </aside>
 
@@ -60,7 +61,6 @@
         </section>
 
 		<h:outputScript library="js" name="materialize.min.js" />
-		<h:outputScript library="js" name="nouislider.js" />
 		<h:outputScript library="js" name="script.js" />
 
 	</h:body>
