@@ -27,12 +27,10 @@ public class LoginPessoaBean implements Serializable{
 	
 	@Transactional
 	public String login(){
-		if(pessoaDao.buscaPessoa(login, senha).equals(null)){
-			System.out.println("Nulo.");
-			return "/pessoa/login-pessoa?faces-redirect=true";
+		if(pessoaDao.buscaPessoa(login, senha) == null ){
+			return "/pessoa/login-pessoa?login=false&faces-redirect=true";
 		}else{
 			this.pessoa = pessoaDao.buscaPessoa(login, senha);
-			//System.out.println("Pessoa: " + pessoa.getUsuario());
 			return "/pessoa/admin-pessoa?faces-redirect=true";
 		}
 	}

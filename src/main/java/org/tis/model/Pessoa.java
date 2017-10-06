@@ -16,6 +16,7 @@ public class Pessoa implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	private String nome;
 	private String login;
 	private String senha;
 
@@ -38,6 +39,15 @@ public class Pessoa implements Serializable{
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public void setPessoa(Pessoa pessoa) {
+		
 	}
 	
 }

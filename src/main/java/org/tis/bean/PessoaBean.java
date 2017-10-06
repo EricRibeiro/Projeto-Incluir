@@ -15,14 +15,21 @@ public class PessoaBean {
 	@Inject
 	private PessoaDao pessoaDao;
 	
+	@Inject 
+	private LoginPessoaBean loginPessoaBean;
+	
 	@Transactional
 	public String salvar(){
 		pessoaDao.salvar(pessoa);
+		// TRATAR AS EXCECOES DE CADASTRADOS ERRADOS, JA EXISTENTE ETC
 		return "/pessoa/login-pessoa?faces-redirect=true";
 	}
 	
-	public void editar(){
-		
+	@Transactional
+	public String editar(){
+		pessoa.setPessoa(loginPessoaBean.getPessoa());
+        pessoaDao.merge(pessoa);
+		return "/pessoa/detalhe-pessoa?faces-redirect=true";
 	}
 	
 	@Transactional
