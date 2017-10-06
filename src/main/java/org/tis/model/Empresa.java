@@ -28,6 +28,7 @@ public class Empresa implements Serializable{
 	private String numero;
 	private String complemento;
 	private String cep;
+	private String email;
 	
 	
 	public Integer getId() {
@@ -107,6 +108,12 @@ public class Empresa implements Serializable{
 	}
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
