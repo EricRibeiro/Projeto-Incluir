@@ -26,6 +26,7 @@ public class VagaDao implements Serializable{
         vaga = manager.merge(vaga);
 		return vaga;
 	}
+
 		
 	public List<Vaga> vagasAbertasPorEmpresa(int id){
 		return manager.createQuery("select v from Vaga v where v.empresa.id = :id and v.status = 'ABERTA'",Vaga.class).setParameter("id", id).getResultList();

@@ -51,7 +51,7 @@ public class PessoaDao implements Serializable{
 		}
 	}//end buscaPessoa()
 
-	public Pessoa getPessoaById(Integer id) {
+	public Pessoa getPessoaById(int id) {
 		return manager.createQuery("select e from Pessoa e where e.id = :id", Pessoa.class).setParameter("id", id).getSingleResult();
 	}
 

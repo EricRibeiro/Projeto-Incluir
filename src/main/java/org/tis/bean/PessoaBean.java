@@ -27,14 +27,15 @@ public class PessoaBean {
 	
 	@Transactional
 	public String editar(){
-		pessoa.setPessoa(loginPessoaBean.getPessoa());
+//		pessoa.setPessoa(loginPessoaBean.getPessoa());
         pessoaDao.merge(pessoa);
 		return "/pessoa/detalhe-pessoa?faces-redirect=true";
 	}
 	
 	@Transactional
 	public Pessoa getPessoaById(Integer id){
-		return pessoaDao.getPessoaById(id);
+		this.pessoa = pessoaDao.getPessoaById(id);
+		return this.pessoa;
 	}
 	
 	
