@@ -42,6 +42,11 @@ public class VagaBean{
 	}
 	
 	@Transactional
+	public String voltar() {
+		return "/pessoa/lista-vagas-pessoa?faces-redirect=true";
+	}
+	
+	@Transactional
 	public String finalizar(int id){
 		this.vaga = vagaDao.findVagaById(id);
 		this.vaga.setStatus("FINALIZADA");
@@ -76,6 +81,14 @@ public class VagaBean{
 		//System.out.println("Id informado :::::::: " + id);
 		return "/empresa/detalhe-vaga?faces-redirect=true&idVaga=" + id;
 	}
+	
+	@Transactional
+	public String detalhaVagaPessoa(int id){
+		//this.vaga = vagaDao.findVagaById(id);
+		//System.out.println("Id informado :::::::: " + id);
+		return "/pessoa/detalhe-vaga-pessoa?faces-redirect=true&idVaga=" + id;
+	}
+	
 	
 	public Vaga findVagaById(){
 		this.vaga = vagaDao.findVagaById(idVaga);

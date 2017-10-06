@@ -43,8 +43,4 @@ public class VagaDao implements Serializable{
 	public List<Vaga> vagasFinalizadasPorEmpresa(Integer id) {
 		return manager.createQuery("select v from Vaga v where v.empresa.id = :id and v.status = 'FINALIZADA'",Vaga.class).setParameter("id", id).getResultList();
 	}
-
-	
-	
-	
 }

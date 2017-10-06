@@ -4,41 +4,46 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" template="/template.xhtml" >
+	xmlns:p="http://primefaces.org/ui" template="/template-pessoa.xhtml">
 
 	<ui:define name="center">
 		<h5 class="center-align">Vagas em Aberto</h5>
-        <h:form>
-            <table class="striped centered responsive-table">
-                <thead>
-                    <tr>
-                        <th>Departamento</th>
-                        <th>Cargo</th>
-                        <th>Data de Criação</th>
-                        <th>Data de Finalização</th>
-                    </tr>
-                </thead>
+		<h:form>
+			<table class="striped centered responsive-table">
+				<thead>
+					<tr>
+						<th>Empresa</th>
+						<th>Departamento</th>
+						<th>Cargo</th>
+						<th>Data de Criação</th>
+						<th>De</th>
+						<th>Até</th>
+						<th>Detalhes</th>
+					</tr>
+				</thead>
 
-                <tbody>
-                    <ui:repeat value="#{vagaBean.vagasAbertasPessoa}" var="vaga">
-                        <tr>
-                            <td>#{vaga.departamento}</td>
-                            <td>#{vaga.cargo}</td>
-                            <td>
-                                <h:outputText value="#{vaga.dataCriacao}">
-                                    <f:convertDateTime pattern = "dd-MM-yyyy" />
-                                </h:outputText>
-                            </td>
-                            <td>
-                                <h:outputText value="#{vaga.dataFinalizacao}">
-                                    <f:convertDateTime pattern = "dd-MM-yyyy" />
-                                </h:outputText>
-                            </td>
-                        </tr>
-                    </ui:repeat>
-                </tbody>
-            </table>
-        </h:form>
+				<tbody>
+					<ui:repeat value="#{vagaBean.vagasAbertasPessoa}" var="vaga">
+						<tr>
+							<td>#{vaga.empresa.razaoSocial}</td>
+							<td>#{vaga.departamento}</td>
+							<td>#{vaga.cargo}</td>
+							<td><h:outputText value="#{vaga.dataCriacao}">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:outputText></td>
+							<td>R$:#{vaga.faixaSalarioMin}</td>
+							<td>R$:#{vaga.faixaSalarioMax}</td>
+							<td><p:commandButton
+									class="btn waves-effect waves-light material-icons"
+									value="details" action="#{vagaBean.detalhaVagaPessoa(vaga.id)}" />
+							</td>
+						</tr>
+					</ui:repeat>
+				</tbody>
+			</table>
+		</h:form>
+
+
 	</ui:define>
 
 </ui:composition>

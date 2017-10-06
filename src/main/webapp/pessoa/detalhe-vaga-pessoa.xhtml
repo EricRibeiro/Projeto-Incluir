@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="/template-pessoa.xhtml">
+    <f:metadata>
+        <f:viewParam id="idVaga" name="idVaga" value="#{vagaBean.idVaga}"/>
+        <f:viewAction action="#{vagaBean.findVagaById}"/>
+    </f:metadata>
+
+    <ui:define name="center">
+        <h5 class="center-align">Detalhes da Vaga</h5>
+        <div class="row">
+            <h:form class="col s12 m12 l12 xl12">
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.empresa.razaoSocial}"/>
+                        
+                        <label for="Id">Empresa</label>
+                    </div>
+
+
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.empresa.municipio}"/>
+
+                        <label for="Status">Município</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.empresa.bairro}"/>
+                        <label for="Cargo">Bairro</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.empresa.logradouro}"/>
+                        <label for="Departamento">Logradouro</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.empresa.numero}"/>
+                        <label for="Cargo">Número</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.empresa.complemento}"/>
+                        <label for="Departamento">Complemento</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.cargo}"/>
+                        <label for="Cargo">Cargo</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.departamento}"/>
+                        <label for="Departamento">Departamento</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m12 l12 xl12">
+                        <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.nivelEscolaridade}"/>
+                        <label for="NivelDeEscolaridade">Nível de Escolaridade</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <h:inputText class="datepicker" disabled="true" type="date"
+                                     value="#{vagaBean.vaga.dataCriacao}">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </h:inputText>
+
+                        <!--Campo escondido para que o JSF capture o valor da data de criação-->
+                        <p:calendar type="date" style="display: none;" value="#{vagaBean.vaga.dataCriacao}"/>
+
+                        <label for="DataDeCriacao">Data de Criação</label>
+                    </div>
+
+                    <div class="input-field col s12 m6 l6 xl6">
+
+
+                       <h:inputText class="datepicker" disabled="true" type="date"
+                                     value="#{vagaBean.vaga.dataFinalizacao}">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </h:inputText>
+
+                        <!--Campo escondido para que o JSF capture o valor da data de finalização-->
+                        <p:calendar type="date" id="date-prime" pattern="dd-MM-yyyy" style="display: none;" value="#{vagaBean.vaga.dataFinalizacao}"/>
+
+                        <label for="DataDeFinalizacao">Data de Finalização</label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m12 l12 xl12">
+                        <p:inputTextarea id="input_text" disabled="true" class="materialize-textarea" data-length="120"
+                                         value="#{vagaBean.vaga.descricao}"/>
+                        <label for="Descricao">Descrição</label>
+                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate salaryRange" disabled="true" value="R$:#{vagaBean.vaga.faixaSalarioMin}"/>
+                        <label for="FaixaSalarialMin">Faixa salarial de</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6 xl6">
+                        <p:inputText class="validate salaryRange" disabled="true" value="R$:#{vagaBean.vaga.faixaSalarioMax}"/>
+                        <label for="FaixaSalarialMax">Faixa salarial até</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12">
+                        <p:commandButton class="btn waves-effect waves-light" value="voltar"
+                                         action="#{vagaBean.voltar()}"/>
+                    </div>
+                </div>
+
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
