@@ -21,13 +21,16 @@ public class EmpresaBean {
 		return "/empresa/login-empresa?faces-redirect=true";
 	}
 	
-	public void editar(){
-		
+	@Transactional
+	public void editar(int id){
+		empresa.setId(id);
+		empresaDao.merge(empresa);
 	}
 	
 	@Transactional
 	public Empresa getEmpresaById(Integer id){
-		return empresaDao.getEmpresaById(id);
+		this.empresa = empresaDao.getEmpresaById(id);
+		return this.empresa;
 	}
 	
 	

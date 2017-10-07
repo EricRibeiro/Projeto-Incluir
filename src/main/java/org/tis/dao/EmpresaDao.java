@@ -21,6 +21,10 @@ public class EmpresaDao implements Serializable{
 		manager.persist(empresa);
 	}
 	
+	public void merge(Empresa empresa){
+		manager.merge(empresa);
+	}
+	
 	public List<Empresa> listar(){
 		return manager.createQuery("select e from Empresa e", Empresa.class).getResultList();
 	}

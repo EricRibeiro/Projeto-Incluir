@@ -76,6 +76,11 @@ public class VagaBean{
 	}
 	
 	@Transactional
+	public List<Vaga> getVagasVencidasPorEmpresa(){
+		return vagaDao.vagasVencidasPorEmpresa(loginEmpresaBean.getEmpresa().getId());
+	}
+	
+	@Transactional
 	public String detalhaVaga(int id){
 		//this.vaga = vagaDao.findVagaById(id);
 		//System.out.println("Id informado :::::::: " + id);

@@ -8,7 +8,7 @@
                 xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
     <f:metadata>
         <f:viewParam id="idVaga" name="idVaga" value="#{vagaBean.idVaga}"/>
-        <f:viewAction action="#{vagaBean.findVagaById}"/>
+        <f:viewAction action="#{vagaBean.findVagaById()}"/>
     </f:metadata>
 
     <ui:define name="center">
