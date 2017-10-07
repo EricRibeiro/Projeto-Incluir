@@ -63,7 +63,8 @@ function datePicker() {
         clear: 'Limpar',
         close: 'Ok',
         closeOnSelect: false, // Close upon selecting a date,
-        format: 'dd-mm-yyyy'
+        format: 'dd-mm-yyyy',
+        min: new Date() 
     });
 };
 

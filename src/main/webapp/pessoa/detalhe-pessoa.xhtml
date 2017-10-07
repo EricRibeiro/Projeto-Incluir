@@ -19,7 +19,7 @@
 
                 <div class="row">
                     <div class="input-field col s12 m6 l6 xl6">
-                        <p:inputText class="validate" disabled="true" value="#{pessoaBean.pessoa.id}"/>
+                        <p:inputText class="validate" disabled="true" value="#{pessoaBean.pessoa.id}" />
 
                         <!--Campo escondido para que o JSF capture o valor do ID-->
                         <p:inputText class="validate" type="hidden" value="#{pessoaBean.pessoa.id}"/>
@@ -39,8 +39,7 @@
                         <label for="Usuário">Usuário</label>
                     </div>
                     <div class="input-field col s12 m6 l6 xl6">
-                        <p:inputText class="validate" type="password" value="#{pessoaBean.pessoa.senha}"
-                                     required="true"/>
+                        <p:inputText class="validate" type="password" value="#{pessoaBean.pessoa.senha}" required="true"/>
                         <label for="Senha">Senha</label>
                     </div>
                 </div>

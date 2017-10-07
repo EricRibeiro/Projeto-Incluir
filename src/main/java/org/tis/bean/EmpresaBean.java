@@ -22,9 +22,10 @@ public class EmpresaBean {
 	}
 	
 	@Transactional
-	public void editar(int id){
+	public String editar(int id){
 		empresa.setId(id);
 		empresaDao.merge(empresa);
+		return "/empresa/detalhe-empresa?faces-redirect=true";
 	}
 	
 	@Transactional
