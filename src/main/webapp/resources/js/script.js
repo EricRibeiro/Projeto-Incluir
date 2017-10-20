@@ -6,6 +6,7 @@ jQuery(function ($) {
     onKeyupCountCharInTextArea();
     datePicker();
     onBtnClickShowInvalidFields();
+    setLocationCoordinates();
 });
 
 function onBtnClickShowInvalidFields() {
@@ -86,5 +87,35 @@ function sideNavConfig() {
             },
         }
     );
+};
+
+function setLocationCoordinates() {
+	
+	var $numero = $("input[id*='numero']");
+ 	
+	$($numero).blur(function() {
+		var $logradouro = $("input[id*='logradouro']");
+		var $numero = $("input[id*='numero']");
+		var $bairro = $("input[id*='bairro']");
+		var $municipio = $("input[id*='municipio']");
+		var $latitude = $("input[id*='latitude']");
+		var $longitude = $("input[id*='longitude']");
+		
+		var endereco =  $logradouro.val() + " " + $numero.val() + " " + $bairro.val() + " " + $municipio.val();
+		var geocoder = new google.maps.Geocoder();
+	 	var lat = -43.96;
+	 	var lng = -43.96;
+	 	
+	 	getCoord(endereco);
+	});	
+};
+
+function getCoord(endereco) {
+	geocoder.geocode( { 'address': endereco }, function(r, s) {
+	    lat = r[0].geometry.location.lat();
+	    lng = r[0].geometry.location.lng();
+	    $latitude.val(lat);
+	    $longitude.val(lng);
+		});
 };
 

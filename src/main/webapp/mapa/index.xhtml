@@ -9,12 +9,9 @@
 
 	<ui:define name="center">
 <f:view contentType="text/html">
-	<p:gmap widgetVar="teste" center="36.890257,30.707417" zoom="13"  type="HYBRID" style="width:100%;height:400px" model="#{mapaBean.simpleModel}" />
+	<p:gmap widgetVar="teste" center="36.890257,30.707417" zoom="16"  type="HYBRID" style="width:100%;height:400px" model="#{mapaBean.simpleModel}" />
 </f:view>
 <script type="text/javascript">
-	
-
-	
 
     if (navigator.geolocation) {
        checkGeolocationByHTML5();
@@ -49,15 +46,19 @@
     	  	});*/
     	  	var mark = new google.maps.Marker({
     	  	    clickable: false,
-    	  	    icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-    	  	                                                    new google.maps.Size(22,22),
-    	  	                                                    new google.maps.Point(0,18),
-    	  	                                                    new google.maps.Point(11,11)),
+    	  	    icon: new google.maps.MarkerImage('https://www.google.com/earth/outreach/images/icon-streetview-pegman.png',
+    	  	    			    null, /* size is determined at runtime */
+    	  	    			    null, /* origin is 0,0 */
+    	  	    			    null, /* anchor is bottom center of the scaled image */
+    	  	    			    new google.maps.Size(22, 22)
+    	  	    			),
+    	  	    
+    	  	    animation: google.maps.Animation.BOUNCE,                                                
     	  	    shadow: null,
     	  	    zIndex: 999,
     	  	    map: PF('teste').getMap()
     	  		});
-    	mark.setPosition(new google.maps.LatLng(latitude, longitude));
+    			mark.setPosition(new google.maps.LatLng(latitude, longitude));
     }
  
 </script>		

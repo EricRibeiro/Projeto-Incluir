@@ -16,9 +16,11 @@ public class EmpresaBean {
 	private EmpresaDao empresaDao;
 	
 	@Transactional
-	public String salvar(){
+	public void salvar(){
 		empresaDao.salvar(empresa);
-		return "/empresa/login-empresa?faces-redirect=true";
+		//return "/empresa/cadastra-empresa";
+		//return "/empresa/login-empresa?faces-redirect=true";
+
 	}
 	
 	@Transactional
