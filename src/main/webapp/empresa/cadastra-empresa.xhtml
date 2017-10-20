@@ -7,7 +7,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-
 <h:head>
     <title>Projeto Incluir</title>
     <f:facet name="first">
@@ -18,40 +17,15 @@
         <h:outputStylesheet library="css" name="form.css"/>
     </f:facet>
 </h:head>
-<script type="text/javascript">
 
-// function getEndereco(){
-// 	var endereco = " ";
-// 	endereco =  "" + document.getElementById('j_idt11:logradouro').value +
-// 				   " " + document.getElementById('j_idt11:numero').value +
-// 				   " " + document.getElementById('j_idt11:bairro').value +
-// 				   " " + document.getElementById('j_idt11:municipio').value;
-// 	getLatLong(endereco);
-// }
-
-
-// function getLatLong(endereco) {
-// 	var geocoder = new google.maps.Geocoder();
-//  	var input = endereco;
-//  	var lat = -43.96;
-//  	var lng = -43.96;
-//   	geocoder.geocode( { 'address': endereco }, function(r, s) {
-//     alert(r[0].geometry.location);
-//     lat = r[0].geometry.location.lat();
-//     lng = r[0].geometry.location.lng();
-//     empresaBean.empresa.lat = 
-//   });
-  	
-// }
-
-</script>
 <h:body>
 
     <main class="center-align">
-    <p:gmap id="geoGmap" widgetVar="geoMap" zoom="2" type="ROADMAP" model="#{mapaBean.simpleModel}" style="display: none;"></p:gmap>
-        <br />
+        <p:gmap id="geoGmap" widgetVar="geoMap" zoom="2" type="ROADMAP" model="#{mapaBean.simpleModel}"
+                style="display: none;"></p:gmap>
+        <br/>
         <h5 class="center-align blue-text">Insira os seus dados</h5>
-        <br />
+        <br/>
         <div class="container">
             <div class="z-depth-1 grey lighten-4 row"
                  style="display: inline-block; padding: 82px 78px 52px 78px; border: 1px solid #EEE;">
@@ -73,7 +47,7 @@
 
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <p:inputText class="validate" value="#{empresaBean.empresa.email}"
+                                <p:inputText class="validate" type="email" value="#{empresaBean.empresa.email}"
                                              required="true"/>
                                 <label for="Email">Email</label>
                             </div>
@@ -101,7 +75,7 @@
 
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <p:inputTextarea id="input_text" class="validate materialize-textarea" data-length="120"
+                                <p:inputTextarea id="input_text" class="validate materialize-textarea" maxlength="120"
                                                  value="#{empresaBean.empresa.descricao}" required="true"/>
                                 <label for="Descricao">Descrição</label>
                                 <span class="character-counter"
@@ -111,23 +85,27 @@
 
                         <div class="row">
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="municipio" class="validate coord" value="#{empresaBean.empresa.municipio}" required="true"/>
+                                <p:inputText id="municipio" class="validate coordinate"
+                                             value="#{empresaBean.empresa.municipio}" required="true"/>
                                 <label for="Municipio">Município</label>
                             </div>
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="bairro" class="validate coord" value="#{empresaBean.empresa.bairro}" required="true"/>
+                                <p:inputText id="bairro" class="validate coordinate"
+                                             value="#{empresaBean.empresa.bairro}" required="true"/>
                                 <label for="Bairro">Bairro</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="logradouro" class="validate coord" value="#{empresaBean.empresa.logradouro}"
+                                <p:inputText id="logradouro" class="validate coordinate"
+                                             value="#{empresaBean.empresa.logradouro}"
                                              required="true"/>
                                 <label for="Logradouro">Logradouro</label>
                             </div>
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="numero" class="validate coord" value="#{empresaBean.empresa.numero}" required="true"/>
+                                <p:inputText id="numero" class="validate coordinate"
+                                             value="#{empresaBean.empresa.numero}" required="true"/>
                                 <label for="Numero">Número</label>
                             </div>
                         </div>
@@ -142,20 +120,21 @@
                                 <label for="CEP">CEP</label>
                             </div>
                         </div>
-                        
+
                         <!--Campo escondido para que o JSF capture o valor da longitude e latitude-->
-                        <div class="row">
+                        <div class="row" style="display: none">
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="latitude" class="validate" value="#{empresaBean.empresa.latitude}" />
+                                <p:inputText id="latitude" class="validate" value="#{empresaBean.empresa.latitude}"/>
                             </div>
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="longitude" class="validate" value="#{empresaBean.empresa.longitude}" />
+                                <p:inputText id="longitude" class="validate" value="#{empresaBean.empresa.longitude}"/>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col s12 m12 l12 xl12">
-                                <p:commandButton class="col s12 btn btn-large waves-effect waves-light blue" value="Salvar" action="#{empresaBean.salvar}"/>
+                                <p:commandButton class="col s12 btn btn-large waves-effect waves-light blue"
+                                                 value="Salvar" action="#{empresaBean.salvar}"/>
                             </div>
                         </div>
 
@@ -166,7 +145,8 @@
     </main>
 
     <h:outputScript library="js" name="materialize.min.js"/>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBR1BQqe7qknSt5_oZZfbO6NT4gLIyVvfc"></script> 
+    <script type="text/javascript"
+            src="http://maps.google.com/maps/api/js?key=AIzaSyBR1BQqe7qknSt5_oZZfbO6NT4gLIyVvfc"></script>
     <h:outputScript library="js" name="script.js"/>
 </h:body>
 </html>
