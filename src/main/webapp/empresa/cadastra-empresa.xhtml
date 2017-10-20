@@ -97,19 +97,7 @@
                                              required="true"/>
                                 <label for="Logradouro">Logradouro</label>
                             </div>
-                            <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="numero" class="validate coordinate"
-                                             value="#{empresaBean.empresa.numero}" required="true"/>
-                                <label for="Numero">Número</label>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText class="validate" value="#{empresaBean.empresa.complemento}"/>
-                                <label for="Complemento">Complemento</label>
-                            </div>
-                            <div class="input-field col s12 m6 l6 xl6">
+                           <div class="input-field col s12 m6 l6 xl6">
                                 <p:inputText id="bairro" class="validate coordinate"
                                              value="#{empresaBean.empresa.bairro}" required="true"/>
                                 <label for="Bairro">Bairro</label>
@@ -126,6 +114,18 @@
                                 <p:inputText id="estado" class="validate coordinate"
                                              value="#{empresaBean.empresa.estado}" required="true"/>
                                 <label for="Estado">Estado</label>
+                            </div>
+                        </div>
+
+						 <div class="row">
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText class="validate" value="#{empresaBean.empresa.complemento}"/>
+                                <label for="Complemento">Complemento</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6 xl6">
+                                <p:inputText id="numero" class="validate coordinate"
+                                             value="#{empresaBean.empresa.numero}" required="true"/>
+                                <label for="Numero">Número</label>
                             </div>
                         </div>
 

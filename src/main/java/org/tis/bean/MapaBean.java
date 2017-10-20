@@ -1,12 +1,11 @@
 package org.tis.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
-
 import org.primefaces.event.map.GeocodeEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.GeocodeResult;
@@ -26,19 +25,19 @@ public class MapaBean implements Serializable {
     
     @PostConstruct
     public void init() {
-        simpleModel = new DefaultMapModel();
-          
-        //Shared coordinates
-        LatLng coord1 = new LatLng(36.879466, 30.667648);
-        LatLng coord2 = new LatLng(36.883707, 30.689216);
-        LatLng coord3 = new LatLng(36.879703, 30.706707);
-        LatLng coord4 = new LatLng(36.885233, 30.702323);
-          
-        //Basic marker
-        simpleModel.addOverlay(new Marker(coord1, "Konyaalti"));
-        simpleModel.addOverlay(new Marker(coord2, "Ataturk Parki"));
-        simpleModel.addOverlay(new Marker(coord3, "Karaalioglu Parki"));
-        simpleModel.addOverlay(new Marker(coord4, "Kaleici"));
+       
+    	simpleModel = new DefaultMapModel();
+    	
+        ArrayList <LatLng> coordenadas = new ArrayList<LatLng>();
+        
+        List<Vaga> vagas = vagaDao.vagasAbertasPessoa();
+        
+        for ( Vaga e : vagas ) {
+        	
+        		simpleModel.addOverlay(new Marker ( new LatLng( Double.valueOf(e.getEmpresa().getLatitude() ) , Double.valueOf( e.getEmpresa().getLongitude() ) ) , e.getCargo() ) );
+        		
+        }
+
     }
   
     public MapModel getSimpleModel() {
@@ -49,7 +48,7 @@ public class MapaBean implements Serializable {
     	 List<GeocodeResult> results = event.getResults();
     }
     
-    public void montarVagas(){
+    public ArrayList montarVagas(){
     	List<Vaga> vagas = vagaDao.vagasAbertasPessoa();
     	String endereco;
     	for( Vaga e : vagas ){
@@ -59,5 +58,7 @@ public class MapaBean implements Serializable {
     		endereco+= e.getEmpresa().getBairro() + " ";
     		endereco+= e.getEmpresa().getMunicipio() + " ";
     	}
+    	
+    	return (ArrayList) vagas;
     }
 }
