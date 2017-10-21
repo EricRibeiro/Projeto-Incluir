@@ -31,7 +31,7 @@ public class VagaBean{
 		vaga.setDataCriacao(Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
 		vaga.setStatus("ABERTA");
 		vagaDao.salvar(vaga);
-		return "/empresa/lista-vagas-abertas?faces-redirect=true";
+		return "/empresa/lista-vagas-abertas?persisted=true&faces-redirect=true";
 	}
 	
 	@Transactional
@@ -51,7 +51,7 @@ public class VagaBean{
 		this.vaga = vagaDao.findVagaById(id);
 		this.vaga.setStatus("FINALIZADA");
 		vagaDao.merge(vaga);
-		return "/empresa/lista-vagas-abertas?faces-redirect=true";
+		return "/empresa/lista-vagas-abertas?finalized=true&faces-redirect=true";
 	}
 	
 	@Transactional

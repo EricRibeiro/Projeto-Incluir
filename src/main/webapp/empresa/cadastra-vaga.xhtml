@@ -7,6 +7,8 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
 
+
+
     <ui:define name="center">
         <h5 class="center-align">Preencha os dados da vaga:</h5>
         <div class="row">
@@ -15,21 +17,22 @@
                 <div class="row">
                     <div class="input-field col s12 m12 l12 xl12">
                         <p:inputText class="validate" value="#{vagaBean.vaga.cargo}" required="true"/>
-                        <label for="Cargo">Cargo</label>
+                        <label for="Cargo" data-error="Preencha corretamente.">Cargo</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12 m12 l12 xl12">
                         <p:inputText class="validate" value="#{vagaBean.vaga.departamento}" required="true"/>
-                        <label for="Departamento">Departamento</label>
+                        <label for="Departamento" data-error="Preencha corretamente.">Departamento</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12 m6 l6 xl6">
                         <p:inputText class="validate" value="#{vagaBean.vaga.nivelEscolaridade}" required="true"/>
-                        <label for="NivelDeEscolaridade">Nível de Escolaridade</label>
+                        <label for="NivelDeEscolaridade"
+                               data-error="Preencha corretamente.">Nível de Escolaridade</label>
                     </div>
                     <div class="input-field col s12 m6 l6 xl6">
                         <p:inputText id="date-materialize" class="datepicker" required="true"/>
@@ -38,42 +41,49 @@
                         <p:calendar type="date" id="date-prime" pattern="dd-MM-yyyy" style="display: none;"
                                     value="#{vagaBean.vaga.dataFinalizacao}" required="true"/>
 
-                        <label for="DataDeFinalizacao">Data de Finalização</label>
+                        <label for="DataDeFinalizacao" data-error="Preencha corretamente.">Data de Finalização</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12 m12 l12 xl12">
-                        <p:inputTextarea id="input_text" class="validate materialize-textarea" data-length="120"
+                        <p:inputTextarea id="input_text" class="validate materialize-textarea" maxlength="120"
                                          value="#{vagaBean.vaga.descricao}" required="true"/>
-                        <label for="Descricao">Descrição</label>
-                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                        <label for="Descricao" data-error="Preencha corretamente."
+                               style="font-size: 12px;">Descrição</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12 m6 l6 xl6">
-                        <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMin}"
+                        <p:inputText id="salary-min" class="validate salary only-numbers"
+                                     value="#{vagaBean.vaga.faixaSalarioMin}"
                                      required="true"/>
-                        <label for="FaixaSalarialMin">Faixa salarial de:</label>
+                        <label for="FaixaSalarialMin" data-error="Preencha corretamente.">Faixa salarial de:</label>
                     </div>
                     <div class="input-field col s12 m6 l6 xl6">
-                        <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMax}"
+                        <p:inputText id="salary-max" class="validate salary only-numbers" value="#{vagaBean.vaga.faixaSalarioMax}"
                                      required="true"/>
-                        <label for="FaixaSalarialMax">Faixa salarial até:</label>
+                        <label for="FaixaSalarialMax" data-error="Preencha corretamente.">Faixa salarial até:</label>
                     </div>
                 </div>
 
-
                 <div class="row">
-                    <div class="col s12">
-                        <p:commandButton class="btn waves-effect waves-light" value="Salvar"
+                    <div class="col s12 m6 l6 xl6">
+                        <h:button class="btn waves-effect waves-light left" value="Cancelar"
+                                  outcome="/empresa/admin-empresa?faces-redirect=true"/>
+                    </div>
+                    <div class="col s12 m6 l6 xl6">
+                        <p:commandButton class="btn waves-effect waves-light right" value="Salvar"
+                                         style="padding-left: 30px; padding-right: 30px;"
                                          action="#{vagaBean.salvar}"/>
                     </div>
                 </div>
 
             </h:form>
         </div>
+        <h:outputScript library="js" name="jquery.mask.min.js"/>
+        <h:outputScript library="js" name="/vaga/vaga.js"/>
     </ui:define>
 
 </ui:composition>

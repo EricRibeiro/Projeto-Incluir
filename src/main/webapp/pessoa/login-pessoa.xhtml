@@ -34,14 +34,14 @@
                     <div class='row'>
                         <div class='input-field col s12 m12 l12 xl12'>
                             <p:inputText class='validate' value="#{loginPessoaBean.login}" required="true"/>
-                            <label for="Usuário">Usuário</label>
+                            <label for="Usuário" data-error="Preencha corretamente.">Usuário</label>
                         </div>
                     </div>
 
                     <div class='row'>
                         <div class='input-field col s12 m12 l12 xl12'>
                             <p:inputText class="validate" type="password" value="#{loginPessoaBean.senha}" required="true"/>
-                            <label for="Senha">Senha</label>
+                            <label for="Senha" data-error="Preencha corretamente.">Senha</label>
                         </div>
                         <label style='float: right;'>
                             <a class='indigo-text' href='#!'><b>Esqueceu a senha?</b></a>
@@ -61,6 +61,8 @@
     </main>
 
     <h:outputScript library="js" name="materialize.min.js"/>
+    <h:outputScript library="js" name="script.js"/>
+    <h:outputScript library="js" name="/login/login.js"/>
 
 </h:body>
 </html>

@@ -22,45 +22,47 @@
 
     <div class="section"></div>
     <main class="center-align">
-            <br/>
-            <h5 class="blue-text">Entre na sua conta</h5>
-            <br />
-            <div class="container">
-                <div class="z-depth-1 grey lighten-4 row"
-                     style="display: inline-block; padding: 82px 78px 52px 78px; border: 1px solid #EEE;">
+        <br/>
+        <h5 class="blue-text">Entre na sua conta</h5>
+        <br/>
+        <div class="container">
+            <div class="z-depth-1 grey lighten-4 row"
+                 style="display: inline-block; padding: 82px 78px 52px 78px; border: 1px solid #EEE;">
 
-                    <h:form class="col s12 m12 l12 xl12">
+                <h:form class="col s12 m12 l12 xl12">
 
-                        <div class='row'>
-                            <div class='input-field col s12 m12 l12 xl12'>
-                                <p:inputText class='validate' value="#{loginEmpresaBean.login}" required="true"/>
-                                <label for="Usuário">Usuário</label>
-                            </div>
+                    <div class='row'>
+                        <div class='input-field col s12 m12 l12 xl12'>
+                            <p:inputText class='validate' value="#{loginEmpresaBean.login}" required="true"/>
+                            <label for="Usuário" data-error="Preencha corretamente.">Usuário</label>
                         </div>
+                    </div>
 
-                        <div class='row'>
-                            <div class='input-field col s12 m12 l12 xl12'>
-                                <p:inputText class="validate" type="password" value="#{loginEmpresaBean.senha}" required="true"/>
-                                <label for="Senha">Senha</label>
-                            </div>
-                            <label style='float: right;'>
-                                <a class='indigo-text' href='#!'><b>Esqueceu a senha?</b></a>
-                            </label>
+                    <div class='row'>
+                        <div class='input-field col s12 m12 l12 xl12'>
+                            <p:inputText class="validate" type="password" value="#{loginEmpresaBean.senha}"
+                                         required="true"/>
+                            <label for="Senha" data-error="Preencha corretamente.">Senha</label>
                         </div>
+                        <label style='float: right;'>
+                            <a class='indigo-text' href='#!'><b>Esqueceu a senha?</b></a>
+                        </label>
+                    </div>
 
-                        <br/>
+                    <br/>
 
-                        <div class='row'>
-                            <p:commandButton class="col s12 btn btn-large waves-effect waves-light blue" value="Login"
-                                             action="#{loginEmpresaBean.login}"/>
-                        </div>
-                    </h:form>
-                </div>
+                    <div class='row'>
+                        <p:commandButton class="col s12 btn btn-large waves-effect waves-light blue" value="Login"
+                                         action="#{loginEmpresaBean.login}"/>
+                    </div>
+                </h:form>
             </div>
-            <a href="cadastra-empresa.xhtml">Não tenho conta</a>
+        </div>
+        <a href="cadastra-empresa.xhtml">Não tenho conta</a>
     </main>
 
     <h:outputScript library="js" name="materialize.min.js"/>
-
+    <h:outputScript library="js" name="script.js"/>
+    <h:outputScript library="js" name="/login/login.js"/>
 </h:body>
 </html>

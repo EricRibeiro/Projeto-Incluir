@@ -7,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.primefaces.model.map.LatLng;
-
 @Entity
 public class Empresa implements Serializable {
 
@@ -18,30 +16,49 @@ public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
     private Integer id;
+
     private String razaoSocial;
+
     private String cnpj;
+
     private String ramoAtividade;
+
     private String descricao;
+
     private String login;
+
     private String senha;
+
     private String municipio;
+
     private String estado;
+
+    private String bairro;
+
+    private String logradouro;
+
+    private String numero;
+
+    private String complemento;
+
+    private String cep;
+
+    private String email;
+
+    private String latitude;
+
+    private String longitude;
 
     public String getEstado() {
         return estado;
     }
+
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    private String bairro;
-    private String logradouro;
-    private String numero;
-    private String complemento;
-    private String cep;
-    private String email;
-    private String latitude;
-    private String longitude;
 
     public String getLatitude() {
         return latitude;

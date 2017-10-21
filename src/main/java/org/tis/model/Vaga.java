@@ -31,8 +31,8 @@ public class Vaga implements Serializable{
 	private Date dataCriacao;
 	@Temporal(TemporalType.DATE)
 	private Date dataFinalizacao;
-	private float faixaSalarioMin;
-	private float faixaSalarioMax;
+	private String faixaSalarioMin;
+	private String faixaSalarioMax;
 	@ManyToOne
 	private Empresa empresa;
 	
@@ -84,16 +84,16 @@ public class Vaga implements Serializable{
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	public float getFaixaSalarioMin() {
+	public String getFaixaSalarioMin() {
 		return faixaSalarioMin;
 	}
-	public void setFaixaSalarioMin(float faixaSalarioMin) {
+	public void setFaixaSalarioMin(String faixaSalarioMin) {
 		this.faixaSalarioMin = faixaSalarioMin;
 	}
-	public float getFaixaSalarioMax() {
+	public String getFaixaSalarioMax() {
 		return faixaSalarioMax;
 	}
-	public void setFaixaSalarioMax(float faixaSalarioMax) {
+	public void setFaixaSalarioMax(String faixaSalarioMax) {
 		this.faixaSalarioMax = faixaSalarioMax;
 	}
 	public String getStatus() {

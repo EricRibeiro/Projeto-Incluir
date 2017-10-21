@@ -21,13 +21,11 @@ public class PessoaBean {
 	@Transactional
 	public String salvar(){
 		pessoaDao.salvar(pessoa);
-		// TRATAR AS EXCECOES DE CADASTRADOS ERRADOS, JA EXISTENTE ETC
-		return "/pessoa/login-pessoa?faces-redirect=true";
+		return "/pessoa/login-pessoa?persisted=true&faces-redirect=true";
 	}
 	
 	@Transactional
 	public String editar(){
-//		pessoa.setPessoa(loginPessoaBean.getPessoa());
         pessoaDao.merge(pessoa);
 		return "/pessoa/detalhe-pessoa?faces-redirect=true";
 	}
