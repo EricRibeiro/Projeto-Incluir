@@ -41,8 +41,8 @@ function validateSalaryRange() {
 
     $($salaryMin).add($salaryMax).blur(function () {
         if ($salaryMin.val() !== "" && $salaryMax.val() !== "") {
-            var salaryMin = parseFloat($salaryMin.val().replace(/[^0-9\.]+/g, ""));
-            var salaryMax = parseFloat($salaryMax.val().replace(/[^0-9\.]+/g, ""));
+            var salaryMin = parseFloat($salaryMin.val().replace(".", "").replace(",", "."));
+            var salaryMax = parseFloat($salaryMax.val().replace(".", "").replace(",", "."));
 
             if (salaryMin > salaryMax) {
                 $salaryMin.val("").removeClass("valid").addClass("invalid");
