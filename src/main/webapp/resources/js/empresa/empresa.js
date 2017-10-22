@@ -45,9 +45,13 @@ function setLocationCoordinates() {
 function onBlurGetAddressWithCEP() {
     var $cep = $("input[id*='cep']");
     var $logradouro = $("input[id*='logradouro']");
+    var $logradouroHidden = $("input[id*='logradouro-hidden']");
     var $bairro = $("input[id*='bairro']");
+    var $bairroHidden = $("input[id*='bairro-hidden']");
     var $municipio = $("input[id*='municipio']");
+    var $municipioHidden = $("input[id*='municipio-hidden']");
     var $estado = $("input[id*='estado']");
+    var $estadoHidden = $("input[id*='estado-hidden']");
 
     $($cep).blur(function () {
         var cep = $(this).val().replace(/\D/g, '');
@@ -58,17 +62,42 @@ function onBlurGetAddressWithCEP() {
                 dataType: 'json',
                 timeout: 1000,
                 success: function (dados) {
-                    $($logradouro).val(dados.logradouro).focus();
-                    $($bairro).val(dados.bairro).focus();
-                    $($municipio).val(dados.localidade).focus();
-                    $($estado).val(dados.uf).focus();
+                    $($logradouro)
+                        .add($logradouroHidden)
+                        .val(dados.logradouro);
+                    $($bairro)
+                        .add($bairroHidden)
+                        .val(dados.bairro);
+                    $($municipio)
+                        .add($municipioHidden)
+                        .val(dados.localidade);
+                    $($estado)
+                        .add($estadoHidden)
+                        .val(dados.uf);
+                    $('.address')
+                        .removeClass("invalid")
+                        .addClass("valid")
+                        .next()
+                        .addClass('active');
                 },
                 error: function () {
-                    $cep.addClass('invalid');
-                    $($logradouro).val("").focusout();
-                    $($bairro).val("").focusout();
-                    $($municipio).val("").focusout();
-                    $($estado).val("").focusout();
+                    $($logradouro)
+                        .add($logradouroHidden)
+                        .val("");
+                    $($bairro)
+                        .add($bairroHidden)
+                        .val("");
+                    $($municipio)
+                        .add($municipioHidden)
+                        .val("");
+                    $($estado)
+                        .add($estadoHidden)
+                        .val("");
+                    $('.address')
+                        .removeClass("valid")
+                        .addClass("invalid")
+                        .next()
+                        .addClass('active');
                 }
             });
         }

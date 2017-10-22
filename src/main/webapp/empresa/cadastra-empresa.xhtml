@@ -93,27 +93,37 @@
 
                         <div class="row">
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="logradouro" class="validate coordinate"
+                                <p:inputText id="logradouro-hidden" class="validate"
                                              value="#{empresaBean.empresa.logradouro}"
-                                             required="true"/>
+                                             required="true" style="display: none;"/>
+                                <p:inputText id="logradouro" class="validate coordinate address"
+                                             value="#{empresaBean.empresa.logradouro}"
+                                             required="true" disabled="true"/>
                                 <label for="Logradouro" data-error="Preencha corretamente.">Logradouro</label>
                             </div>
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="bairro" class="validate coordinate"
-                                             value="#{empresaBean.empresa.bairro}" required="true"/>
+                                <p:inputText id="bairro-hidden" class="validate"
+                                             value="#{empresaBean.empresa.bairro}" required="true"
+                                             style="display: none;"/>
+                                <p:inputText id="bairro" class="validate coordinate address"
+                                             value="#{empresaBean.empresa.bairro}" required="true" disabled="true"/>
                                 <label for="Bairro" data-error="Preencha corretamente.">Bairro</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="municipio" class="validate coordinate"
-                                             value="#{empresaBean.empresa.municipio}" required="true"/>
+                                <p:inputText id="municipio-hidden" class="validate"
+                                             value="#{empresaBean.empresa.municipio}" required="true" style="display: none;"/>
+                                <p:inputText id="municipio" class="validate coordinate address"
+                                             value="#{empresaBean.empresa.municipio}" required="true" disabled="true"/>
                                 <label for="Municipio" data-error="Preencha corretamente.">Município</label>
                             </div>
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="estado" class="validate coordinate"
-                                             value="#{empresaBean.empresa.estado}" required="true"/>
+                                <p:inputText id="estado-hidden" class="validate"
+                                             value="#{empresaBean.empresa.estado}" required="true" style="display: none;"/>
+                                <p:inputText id="estado" class="validate coordinate address"
+                                             value="#{empresaBean.empresa.estado}" required="true" disabled="true"/>
                                 <label for="Estado" data-error="Preencha corretamente.">Estado</label>
                             </div>
                         </div>
@@ -133,11 +143,11 @@
                         <!--Campo escondido para que o JSF capture o valor da longitude e latitude-->
                         <div class="row" style="display: none">
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="latitude" class="validate"
+                                <p:inputText id="latitude" class="validate" required="true"
                                              value="#{empresaBean.empresa.latitude}"/>
                             </div>
                             <div class="input-field col s12 m6 l6 xl6">
-                                <p:inputText id="longitude" class="validate"
+                                <p:inputText id="longitude" class="validate" required="true"
                                              value="#{empresaBean.empresa.longitude}"/>
                             </div>
                         </div>
