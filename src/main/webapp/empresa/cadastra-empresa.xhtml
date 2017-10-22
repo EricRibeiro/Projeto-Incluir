@@ -85,9 +85,9 @@
 
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <p:inputText id="cep" class="validate only-numbers" value="#{empresaBean.empresa.cep}"
+                                <p:inputText id="cep" class="validate coordinate only-numbers" value="#{empresaBean.empresa.cep}"
                                              required="true"/>
-                                <label for="CEP" data-error="Preencha corretamente.">CEP</label>
+                                <label for="CEP" class="address-label" data-error="Preencha corretamente.">CEP</label>
                             </div>
                         </div>
 
@@ -96,18 +96,18 @@
                                 <p:inputText id="logradouro-hidden" class="validate"
                                              value="#{empresaBean.empresa.logradouro}"
                                              required="true" style="display: none;"/>
-                                <p:inputText id="logradouro" class="validate coordinate address"
+                                <p:inputText id="logradouro" class="validate address"
                                              value="#{empresaBean.empresa.logradouro}"
                                              required="true" disabled="true"/>
-                                <label for="Logradouro" data-error="Preencha corretamente.">Logradouro</label>
+                                <label for="Logradouro" class="address-label" data-error="Preencha o CEP corretamente.">Logradouro</label>
                             </div>
                             <div class="input-field col s12 m6 l6 xl6">
                                 <p:inputText id="bairro-hidden" class="validate"
                                              value="#{empresaBean.empresa.bairro}" required="true"
                                              style="display: none;"/>
-                                <p:inputText id="bairro" class="validate coordinate address"
+                                <p:inputText id="bairro" class="validate address"
                                              value="#{empresaBean.empresa.bairro}" required="true" disabled="true"/>
-                                <label for="Bairro" data-error="Preencha corretamente.">Bairro</label>
+                                <label for="Bairro" class="address-label" data-error="Preencha o CEP corretamente.">Bairro</label>
                             </div>
                         </div>
 
@@ -115,16 +115,16 @@
                             <div class="input-field col s12 m6 l6 xl6">
                                 <p:inputText id="municipio-hidden" class="validate"
                                              value="#{empresaBean.empresa.municipio}" required="true" style="display: none;"/>
-                                <p:inputText id="municipio" class="validate coordinate address"
+                                <p:inputText id="municipio" class="validate address"
                                              value="#{empresaBean.empresa.municipio}" required="true" disabled="true"/>
-                                <label for="Municipio" data-error="Preencha corretamente.">Município</label>
+                                <label for="Municipio" class="address-label" data-error="Preencha o CEP corretamente.">Município</label>
                             </div>
                             <div class="input-field col s12 m6 l6 xl6">
                                 <p:inputText id="estado-hidden" class="validate"
                                              value="#{empresaBean.empresa.estado}" required="true" style="display: none;"/>
-                                <p:inputText id="estado" class="validate coordinate address"
+                                <p:inputText id="estado" class="validate address"
                                              value="#{empresaBean.empresa.estado}" required="true" disabled="true"/>
-                                <label for="Estado" data-error="Preencha corretamente.">Estado</label>
+                                <label for="Estado" class="address-label" data-error="Preencha o CEP corretamente.">Estado</label>
                             </div>
                         </div>
 
@@ -154,7 +154,7 @@
 
                         <div class="row">
                             <div class="col s12 m12 l12 xl12">
-                                <p:commandButton class="col s12 btn btn-large waves-effect waves-light blue"
+                                <p:commandButton id="send-btn" class="col s12 btn btn-large waves-effect waves-light blue"
                                                  value="Salvar" action="#{empresaBean.salvar}"/>
                             </div>
                         </div>
