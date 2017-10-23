@@ -5,6 +5,7 @@ jQuery(function ($) {
     sideNavConfig();
     datePicker();
     onBtnClickShowInvalidFields();
+    collapsible();
 });
 
 function onlyAllowNumbers() {
@@ -65,3 +66,8 @@ function sideNavConfig() {
     );
 };
 
+function collapsible() {
+	$(document).ready(function() {
+		$('.collapsible').collapsible();
+	});
+};
