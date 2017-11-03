@@ -8,62 +8,101 @@
 
 	<ui:define name="center">
 		<h5 class="center-align">Vagas em Aberto</h5>
-		<ul class="collapsible hoverable" data-collapsible="expandable">
-			<ui:repeat value="#{vagaBean.vagasAbertasPessoa}" var="vaga">
-				<li>
-					<div class="collapsible-header">
-						<div class="row">
-							<div class="col s12 m10 l10 xl10 blue-text text-darken-2">
-								<h5>#{vaga.cargo}</h5>
-							</div>
-						
-							<div class="col s12 m2 l2 xl2 grey-text">
-								Criada:
-								<h:outputText value="#{vaga.dataCriacao}">
-									<f:convertDateTime pattern="dd/MM/yyyy" />
-								</h:outputText>
-							</div>
+		<h:form class="col s12 m12 l12 xl12">
+			<div class="row">
+				<div class="input-field col s12 m3 l3 xl3">
+					<p:inputText id="cargoFiltro" value="#{vagaBean.filtroCargo}" />
+					<label for="Usuário">Cargo</label>
+				</div>
+				<div class="input-field col s12 m3 l3 xl3">
+					<p:inputText id="nivelFiltro" value="#{vagaBean.filtroNivel}" />
+					<label for="Usuário">Nivel Escolaridade</label>
+				</div>
+				<div class="input-field col s12 m3 l3 xl3">
+					<p:inputText id="descricaoFiltro"
+						value="#{vagaBean.filtroDescricao}" />
+					<label for="Usuário">Descrição</label>
+				</div>
+				<div class="input-field col s12 m3 l3 xl3">
+					<p:inputText id="departamentoFiltro"
+						value="#{vagaBean.filtroDepartamento}" />
+					<label for="Usuário">Departamento</label>
+				</div>
+				<div class="col s12 m12 l12 xl12">
+					<p:commandButton id="filtrar"
+						class="col s12 btn btn-large waves-effect waves-light blue"
+						value="Filtrar" actionListener="#{vagaBean.getVagasAbertasPessoa}"
+						update="@all" />
+				</div>
+			</div>
 
-							<div class="col s12 m12 l12 xl12 grey-text vagaCol">De
-								R$#{vaga.faixaSalarioMin} até R$ #{vaga.faixaSalarioMax}
+
+			<ul class="collapsible hoverable" data-collapsible="expandable">
+				<ui:repeat value="#{vagaBean.vagasAbertasPessoa}" var="vaga">
+					<li>
+						<div class="collapsible-header">
+							<div class="row">
+								<div class="col s12 m10 l10 xl10 blue-text text-darken-2">
+									<h5>#{vaga.cargo}</h5>
+								</div>
+
+								<div class="col s12 m12 l12 xl2 grey-text">
+									Criada:
+									<h:outputText value="#{vaga.dataCriacao}">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:outputText>
+								</div>
+
+								<div class="col s12 m12 l12 xl12 grey-text vagaCol">De
+									R$#{vaga.faixaSalarioMin} até R$ #{vaga.faixaSalarioMax}</div>
+
+								<div class="col s12 m12 l12 xl12 vagaCol">
+									<strong>1 vaga:</strong> #{vaga.empresa.municipio} -
+									#{vaga.empresa.estado}
+								</div>
 							</div>
-						
-							<div class="col s12 m12 l12 xl12 vagaCol">
-								<strong>1 vaga:</strong> #{vaga.empresa.municipio} - #{vaga.empresa.estado}
+						</div>
+
+						<div class="collapsible-body">
+							<div class="row">
+								<h6 class="grey-text">
+									<i class="material-icons">description</i> Descrição:
+								</h6>
+								<div class="col s12 m12 l12 xl12">#{vaga.descricao}</div>
+							</div>
+							<div class="divider"></div>
+							<div class="row">
+								<h6 class="grey-text">
+									<i class="material-icons">business_center</i> Empresa:
+								</h6>
+								<div class="col s12 m12 l12 xl12">#{vaga.empresa.razaoSocial}</div>
+							</div>
+							<div class="divider"></div>
+							<div class="row">
+								<h6 class="grey-text">
+									<i class="material-icons">location_on</i> Localização:
+								</h6>
+								<div class="col s12 m12 l12 xl12">#{vaga.empresa.logradouro},
+									#{vaga.empresa.numero} - #{vaga.empresa.bairro},
+									#{vaga.empresa.municipio} - #{vaga.empresa.estado},
+									#{vaga.empresa.cep}
+								</div>	
+							</div>
+							<div class="divider"></div>
+							<div class="row" style="margin-top: 20px;">
+								<div class="col s12 m12 l12 xl12">
+									<p:commandButton 
+										id="candidatar"
+										class="btn btn-large waves-effect waves-light blue right"
+										value="#{vagaBean.verificaCandidato(vaga.id)}"
+										action="#{vagaBean.candidatar(vaga.id)}" />
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div class="collapsible-body">
-						<div class="row">
-							<h6 class="grey-text">
-								<i class="material-icons">description</i> Descrição:
-							</h6>
-							<div class="col s12 m12 l12 xl12">#{vaga.descricao}</div>
-						</div>
-						<div class="divider"></div>
-						<div class="row">
-							<h6 class="grey-text">
-								<i class="material-icons">business_center</i> Empresa:
-							</h6>
-							<div class="col s12 m12 l12 xl12">#{vaga.empresa.razaoSocial}</div>
-						</div>
-						<div class="divider"></div>
-						<div class="row">
-							<h6 class="grey-text">
-								<i class="material-icons">location_on</i> Localização:
-							</h6>
-							<div class="col s12 m12 l12 xl12">#{vaga.empresa.logradouro},
-								#{vaga.empresa.numero} - #{vaga.empresa.bairro},
-								#{vaga.empresa.municipio} - #{vaga.empresa.estado}, #{vaga.empresa.cep}</div>
-							<div class="col s12 m12 l12 xl12"></div>
-							<div class="col s12 m12 l12 xl12"></div>
-							<div class="col s12 m12 l12 xl12"></div>
-							<div class="col s12 m12 l12 xl12"></div>
-						</div>
-					</div>
-				</li>
-			</ui:repeat>
-		</ul>
+					</li>
+				</ui:repeat>
+			</ul>
+		</h:form>
+		<h:outputScript library="js" name="/pessoa/candidatar.js" />
 	</ui:define>
 </ui:composition>

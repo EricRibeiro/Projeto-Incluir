@@ -1,6 +1,7 @@
 package org.tis.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,25 @@ public class Pessoa implements Serializable{
 	private String login;
 	private String senha;
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+	        return false;
+	    }
+		
+		Pessoa pessoa = (Pessoa) obj;
+		
+		if (pessoa.id != this.getId()) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	@Override
+    public int hashCode() {
+        return Objects.hash(id, nome, login, senha	);
+    }
 	
 	public Integer getId() {
 		return id;

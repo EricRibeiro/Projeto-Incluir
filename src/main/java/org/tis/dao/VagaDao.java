@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.tis.model.Empresa;
 import org.tis.model.Vaga;
 
 public class VagaDao implements Serializable{
@@ -32,6 +33,20 @@ public class VagaDao implements Serializable{
 		return manager.createQuery("select v from Vaga v where v.empresa.id = :id and v.status = 'ABERTA' and v.dataFinalizacao >= current_date",Vaga.class).setParameter("id", id).getResultList();
 	}
 
+	public List<Vaga> vagasAbertasPessoa(String cargo, String departamento, String descricao, String nivel){
+		return manager.createQuery("select v from Vaga v where v.status = 'ABERTA' "
+				+ "and v.dataFinalizacao >= current_date "
+				+ "and v.cargo LIKE :cargo "
+				+ "and v.departamento LIKE :departamento "
+				+ "and v.descricao LIKE :descricao "
+				+ "and v.nivelEscolaridade LIKE :nivel",Vaga.class).
+				setParameter("cargo", "%" + cargo + "%").
+				setParameter("nivel", "%" + nivel + "%").
+				setParameter("departamento", "%" + departamento + "%").
+				setParameter("descricao", "%" + descricao + "%").
+				getResultList();
+	}
+	
 	public List<Vaga> vagasAbertasPessoa(){
 		return manager.createQuery("select v from Vaga v where v.status = 'ABERTA' and v.dataFinalizacao >= current_date",Vaga.class).getResultList();
 	}
@@ -47,4 +62,11 @@ public class VagaDao implements Serializable{
 	public List<Vaga> vagasVencidasPorEmpresa(Integer id) {
 		return manager.createQuery("select v from Vaga v where v.empresa.id = :id and v.dataFinalizacao < current_date",Vaga.class).setParameter("id", id).getResultList();
 	}
+
+	public List<Vaga> CandidatosPorVaga(Empresa empresa) {
+		return manager.createQuery("select distinct(v) from Vaga v join fetch v.candidatos where v.empresa = :empresa",Vaga.class).setParameter("empresa", empresa).getResultList();
+	}
+
+	
+	
 }

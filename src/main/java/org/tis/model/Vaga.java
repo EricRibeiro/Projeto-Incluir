@@ -1,12 +1,15 @@
 package org.tis.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,6 +38,8 @@ public class Vaga implements Serializable{
 	private String faixaSalarioMax;
 	@ManyToOne
 	private Empresa empresa;
+	@ManyToMany
+	private List<Pessoa> candidatos = new ArrayList<>();
 	
 	public Integer getId() {
 		return id;
@@ -102,4 +107,11 @@ public class Vaga implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public List<Pessoa> getCandidatos() {
+		return candidatos;
+	}
+	public void setCandidatos(List<Pessoa> candidatos) {
+		this.candidatos = candidatos;
+	}
+	
 }
