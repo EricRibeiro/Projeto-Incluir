@@ -26,7 +26,6 @@
                         <label for="Id">ID</label>
                     </div>
 
-
                     <div class="input-field col s12 m6 l6 xl6">
                         <p:inputText class="validate" disabled="true" value="#{vagaBean.vaga.status}"/>
 
@@ -39,18 +38,18 @@
 
                 <div class="row">
                     <div class="input-field col s12 m6 l6 xl6">
-                        <p:inputText class="validate" value="#{vagaBean.vaga.cargo}"/>
+                        <p:inputText class="validate" value="#{vagaBean.vaga.cargo}" required="true"/>
                         <label for="Cargo">Cargo</label>
                     </div>
                     <div class="input-field col s12 m6 l6 xl6">
-                        <p:inputText class="validate" value="#{vagaBean.vaga.departamento}"/>
+                        <p:inputText class="validate" value="#{vagaBean.vaga.departamento}" required="true"/>
                         <label for="Departamento">Departamento</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12 m12 l12 xl12">
-                        <p:inputText class="validate" value="#{vagaBean.vaga.nivelEscolaridade}"/>
+                        <p:inputText class="validate" value="#{vagaBean.vaga.nivelEscolaridade}" required="true"/>
                         <label for="NivelDeEscolaridade">Nível de Escolaridade</label>
                     </div>
                 </div>
@@ -69,11 +68,11 @@
 
                     <div class="input-field col s12 m6 l6 xl6">
 
-
-                        <h:inputText type="date" id="date-materialize" class="datepicker" />
+                        <h:inputText type="date" id="date-materialize" class="datepicker" required="true"/>
 
                         <!--Campo escondido para que o JSF capture o valor da data de criação-->
-                        <p:calendar type="date" id="date-prime" pattern="dd-MM-yyyy" style="display: none;" value="#{vagaBean.vaga.dataFinalizacao}"/>
+                        <p:calendar type="date" id="date-prime" pattern="dd-MM-yyyy" style="display: none;"
+                                    value="#{vagaBean.vaga.dataFinalizacao}" required="true"/>
 
                         <label for="DataDeFinalizacao">Data de Finalização</label>
                     </div>
@@ -83,7 +82,7 @@
                 <div class="row">
                     <div class="input-field col s12 m12 l12 xl12">
                         <p:inputTextarea id="input_text" class="materialize-textarea" data-length="120"
-                                         value="#{vagaBean.vaga.descricao}"/>
+                                         value="#{vagaBean.vaga.descricao}" required="true"/>
                         <label for="Descricao">Descrição</label>
                         <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
                     </div>
@@ -91,23 +90,27 @@
 
                 <div class="row">
                     <div class="input-field col s12 m6 l6 xl6">
-                        <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMin}"/>
+                        <p:inputText id="salary-min" class="validate salary only-numbers"
+                                     value="#{vagaBean.vaga.faixaSalarioMin}" required="true"/>
                         <label for="FaixaSalarialMin">Faixa salarial de:</label>
                     </div>
                     <div class="input-field col s12 m6 l6 xl6">
-                        <p:inputText class="validate salaryRange" value="#{vagaBean.vaga.faixaSalarioMax}"/>
+                        <p:inputText id="salary-max" class="validate salary only-numbers"
+                                     value="#{vagaBean.vaga.faixaSalarioMax}" required="true"/>
                         <label for="FaixaSalarialMax">Faixa salarial até:</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col s12">
-                        <p:commandButton class="btn waves-effect waves-light" value="Editar" action="#{vagaBean.editar()}"/>
+                        <p:commandButton class="btn waves-effect waves-light" value="Editar"
+                                         action="#{vagaBean.editar()}"/>
                     </div>
                 </div>
 
             </h:form>
         </div>
+        <h:outputScript library="js" name="jquery.mask.min.js"/>
         <h:outputScript library="js" name="/vaga/vaga.js"/>
     </ui:define>
 
