@@ -3,6 +3,8 @@ package org.tis.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
@@ -13,8 +15,10 @@ import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
 import org.tis.dao.VagaDao;
+import org.tis.model.Empresa;
 import org.tis.model.Vaga;
  
+@SuppressWarnings("serial")
 @ManagedBean
 public class MapaBean implements Serializable {
     
@@ -25,64 +29,58 @@ public class MapaBean implements Serializable {
     
     @PostConstruct
     public void init() {
+    	
+        TreeMap< String , String > map = new TreeMap< String , String >();
        
     	simpleModel = new DefaultMapModel();
     	        
         List<Vaga> vagas = vagaDao.vagasAbertasPessoa();
         
-        ArrayList <String> nomes = new ArrayList<String>();
-        
-        int i = 0;
-        
+        ArrayList <Empresa> empresas = new ArrayList<Empresa>();
+              
         for (Vaga e: vagas ) {
+        	        	        	
+        	if ( map.containsKey( e.getEmpresa().getRazaoSocial() ) ) {
+        		
+        		String temp = map.get(e.getEmpresa().getRazaoSocial());
+        		temp = temp + " , " + e.getCargo();
+        		
+        		map.put(e.getEmpresa().getRazaoSocial(), temp);
+        		
         	
-        	nomes.add(e.getEmpresa().getRazaoSocial());
+         	}else{
+         		
+                map.put(e.getEmpresa().getRazaoSocial(), e.getCargo() );
+                
+            	empresas.add(e.getEmpresa());
+         		
+         	}
+        	
         	
         }
         
-        for ( Vaga e : vagas ) {
+        for (Empresa e : empresas) {
         	
-        	//TENTATIVAS DE USAR FUNCAO LAMBDA PARA FILTAR E ENCONTRAR O VALOR DE STRING IGUAL DIRETO NA COLLECTION
-    		//vagas.stream().anyMatch( String -> e.getEmpresa().getRazaoSocial().equalsIgnoreCase(s)
-    		//nomes.stream().filter( str -> str.trim().equals(s+"") ) != null 
-    		//nomes.toString().contains(e.getEmpresa().getRazaoSocial())
-        	// 
-        	//IDEIA NOVA : USAR UM MAPA PARA MAPEAR UMA STRING (nome da empresa ) para uma collection de marcadores e iterar neles.
-        	//
-        	// MAIS FACIL IMPLEMENTADA COM UM ITERATOR: 
-        	
-        	i = 0;
-        	
-        	for (String n : nomes ) {
+        	if (map.containsKey(e.getRazaoSocial())) {
         		
-        		if (n.equalsIgnoreCase(e.getEmpresa().getRazaoSocial())) {
+        		String dados =  e.getRazaoSocial() + " : \r\n" 
+   					 + "Vagas: " + map.get(e.getRazaoSocial()) +  "\r\n"
+   					 + "Endereço:\r\n "
+   					 + e.getLogradouro() +  " " 
+   					 + e.getNumero() + "\r\n"
+   					 + e.getBairro() + "\r\n"
+   					 + e.getCep();
+        		if (e.getLatitude().isEmpty() == true || e.getLongitude().isEmpty() == true ) {
         			
-        			i++;
+        			// NAO IMPRIME E FAZ NADA SE LONG E LAT FOREM NULAS
         			
+        		}else {
+        			simpleModel.addOverlay(new Marker ( new LatLng( Double.valueOf(e.getLatitude() ) , Double.valueOf( e.getLongitude() ) ) 
+        									, dados ));
         		}
-        		
-        	}
-        	// nao trata vaga em duplicidade. precisa-se mapear.
-        	if ( true ){
-        		 
-        		String dados =  e.getEmpresa().getRazaoSocial() + " : \r\n" 
- 							 + "Vaga: " + e.getCargo() +  "\r\n"
- 							 + "Endereço:\r\n"
- 							 + e.getEmpresa().getLogradouro() +  " " 
- 							 + e.getEmpresa().getNumero() + "\r\n"
- 							 + e.getEmpresa().getBairro() + "\r\n"
- 							 + e.getEmpresa().getCep();
-        		
-        		simpleModel.addOverlay(new Marker ( new LatLng( Double.valueOf(e.getEmpresa().getLatitude() ) , Double.valueOf( e.getEmpresa().getLongitude() ) ) 
-       				   , dados ));
-         		 	
-        	}
-        	else {
-        	
-        	
         	}
         }
-
+        
     }
   
     public MapModel getSimpleModel() {
@@ -94,9 +92,4 @@ public class MapaBean implements Serializable {
     	 List<GeocodeResult> results = event.getResults();
     }
     
-    public ArrayList<Vaga> montarVagas(){
-    	List<Vaga> vagas = vagaDao.vagasAbertasPessoa();
-    	String endereco;
-    	return (ArrayList) vagas;
-    }
 }
