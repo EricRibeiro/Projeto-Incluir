@@ -12,7 +12,7 @@
         </p:outputPanel>
 
         <f:view contentType="text/html">
-            <p:gmap id="gmap" widgetVar="teste" center="36.890257,30.707417" zoom="16" type="HYBRID"
+            <p:gmap id="gmap" widgetVar="teste" center="36.890257,30.707417" zoom="16" type="ROADMAP"
                     style="width:100%;height:800px" model="#{mapaBean.simpleModel}">
                 <p:ajax event="overlaySelect" listener="#{mapaBean.onMarkerSelect}"/>
                 <p:gmapInfoWindow id="infoWindow">
