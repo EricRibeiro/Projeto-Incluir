@@ -17,8 +17,12 @@ public class EmpresaBean {
 	
 	@Transactional
 	public String salvar(){
-		empresaDao.salvar(empresa);
-		return "/empresa/login-empresa?persisted=true&faces-redirect=true";
+        if (empresaDao.nmDeUsuarioEstaDisponivel(empresa.getLogin())) {
+            empresaDao.salvar(empresa);
+            return "/empresa/login-empresa?persisted=true&faces-redirect=true";
+        } else {
+            return "/empresa/cadastra-empresa?usuario-disponivel=false&faces-redirect=true";
+        }
 		
 	}
 	

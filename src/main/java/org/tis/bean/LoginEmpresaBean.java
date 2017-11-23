@@ -31,7 +31,7 @@ public class LoginEmpresaBean implements Serializable {
             return "/empresa/login-empresa?login=false&faces-redirect=true";
         } else {
             this.empresa = empresaDao.buscaEmpresa(login, senha);
-            return "/empresa/admin-empresa?faces-redirect=true";
+            return "/empresa/lista-candidatos-vaga?faces-redirect=true";
         }
     }
 

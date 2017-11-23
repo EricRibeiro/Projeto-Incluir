@@ -6,6 +6,7 @@ jQuery(function ($) {
     datePicker();
     onBtnClickShowInvalidFields();
     collapsible();
+    onLoginUnavailableShowMessage();
 });
 
 function onlyAllowNumbers() {
@@ -67,7 +68,13 @@ function sideNavConfig() {
 };
 
 function collapsible() {
-	$(document).ready(function() {
-		$('.collapsible').collapsible();
-	});
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+    });
+};
+
+function onLoginUnavailableShowMessage() {
+    if ($(location).attr('href').indexOf("usuario-disponivel=false") >= 0) {
+        Materialize.toast("O nome de usuário escolhido já está em uso!", 5000);
+    }
 };

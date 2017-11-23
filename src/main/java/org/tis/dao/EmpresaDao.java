@@ -43,6 +43,18 @@ public class EmpresaDao implements Serializable {
         }
     }
 
+    public Boolean nmDeUsuarioEstaDisponivel(String login) {
+        Boolean estaDisponivel = false;
+
+        try {
+            manager.createQuery("select e from Empresa e where e.login = :login", Empresa.class).setParameter("login", login).getSingleResult();
+        } catch (Exception e) {
+            estaDisponivel = true;
+        }
+
+        return estaDisponivel;
+    }
+
     public Empresa getEmpresaById(Integer id) {
         return manager.createQuery("select e from Empresa e where e.id = :id", Empresa.class).setParameter("id", id).getSingleResult();
     }

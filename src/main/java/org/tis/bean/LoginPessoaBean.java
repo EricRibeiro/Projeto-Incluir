@@ -31,7 +31,7 @@ public class LoginPessoaBean implements Serializable {
             return "/pessoa/login-pessoa?login=false&faces-redirect=true";
         } else {
             this.pessoa = pessoaDao.buscaPessoa(login, senha);
-            return "/pessoa/admin-pessoa?faces-redirect=true";
+            return "/pessoa/lista-vagas-pessoa?faces-redirect=true";
         }
     }
 

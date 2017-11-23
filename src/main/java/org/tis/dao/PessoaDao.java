@@ -31,16 +31,27 @@ public class PessoaDao implements Serializable {
 
     public Pessoa buscaPessoa(String login, String senha) {
         Pessoa pessoa = new Pessoa();
+
         try {
             pessoa = manager.createQuery("select e from Pessoa e where e.login = :login", Pessoa.class).setParameter("login", login).getSingleResult();
-            if (pessoa.getSenha().equals(senha)) {
-                return pessoa;
-            } else {
-                return null;
-            }
+            pessoa = (pessoa.getSenha().equals(senha)) ? pessoa : null;
         } catch (Exception e) {
-            return null;
+            pessoa = null;
         }
+
+        return pessoa;
+    }
+
+    public Boolean nmDeUsuarioEstaDisponivel(String login) {
+        Boolean estaDisponivel = false;
+
+        try {
+            manager.createQuery("select e from Pessoa e where e.login = :login", Pessoa.class).setParameter("login", login).getSingleResult();
+        } catch (Exception e) {
+            estaDisponivel = true;
+        }
+
+        return estaDisponivel;
     }
 
     public Pessoa getPessoaById(int id) {

@@ -20,8 +20,12 @@ public class PessoaBean {
 	
 	@Transactional
 	public String salvar(){
-		pessoaDao.salvar(pessoa);
-		return "/pessoa/login-pessoa?persisted=true&faces-redirect=true";
+        if (pessoaDao.nmDeUsuarioEstaDisponivel(pessoa.getLogin())) {
+            pessoaDao.salvar(pessoa);
+            return "/pessoa/login-pessoa?persisted=true&faces-redirect=true";
+        } else {
+            return "/pessoa/cadastra-pessoa?usuario-disponivel=false&faces-redirect=true";
+        }
 	}
 	
 	@Transactional
