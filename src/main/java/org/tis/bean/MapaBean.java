@@ -7,8 +7,10 @@ import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import org.primefaces.event.map.GeocodeEvent;
+import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.GeocodeResult;
 import org.primefaces.model.map.LatLng;
@@ -20,9 +22,14 @@ import org.tis.model.Vaga;
  
 @SuppressWarnings("serial")
 @ManagedBean
+@ViewScoped
 public class MapaBean implements Serializable {
     
-    private MapModel simpleModel;
+    private MapModel advancedModel;
+    private Marker marker;
+    private MarkerEx markerEx;
+    private TreeMap< String , String[] > mapMarker = new TreeMap< String , String[] >();
+
     
     @Inject
 	private VagaDao vagaDao;
@@ -32,7 +39,7 @@ public class MapaBean implements Serializable {
     	
         TreeMap< String , String > map = new TreeMap< String , String >();
        
-    	simpleModel = new DefaultMapModel();
+    	advancedModel = new DefaultMapModel();
     	        
         List<Vaga> vagas = vagaDao.vagasAbertasPessoa();
         
@@ -54,17 +61,15 @@ public class MapaBean implements Serializable {
                 
             	empresas.add(e.getEmpresa());
          		
-         	}
-        	
-        	
+         	}   	
         }
         
         for (Empresa e : empresas) {
         	
         	if (map.containsKey(e.getRazaoSocial())) {
         		
-        		String dados =  e.getRazaoSocial() + " : \r\n" 
-   					 + "Vagas: " + map.get(e.getRazaoSocial()) +  "\r\n"
+        		String dados =  e.getRazaoSocial() + " : \n" 
+   					 + "Vagas: " + map.get(e.getRazaoSocial()) +  "\n"
    					 + "Endereço:\r\n "
    					 + e.getLogradouro() +  " " 
    					 + e.getNumero() + "\r\n"
@@ -75,21 +80,54 @@ public class MapaBean implements Serializable {
         			// NAO IMPRIME E FAZ NADA SE LONG E LAT FOREM NULAS
         			
         		}else {
-        			simpleModel.addOverlay(new Marker ( new LatLng( Double.valueOf(e.getLatitude() ) , Double.valueOf( e.getLongitude() ) ) 
-        									, dados ));
+        			Marker mk = new Marker( new LatLng( Double.valueOf( e.getLatitude() ) , Double.valueOf(e.getLongitude()) ) , dados );
+        			advancedModel.addOverlay(mk);
+        			String [] temp = new String [6];
+        			
+        			temp[0]=e.getRazaoSocial();
+        			temp[1]=map.get(e.getRazaoSocial());
+        			temp[2]=e.getLogradouro();
+        			temp[3]=e.getNumero();
+        			temp[4]=e.getBairro();
+        			temp[5]=e.getCep();
+        			mapMarker.put(mk.getTitle(),temp);
+        			
         		}
         	}
         }
         
+        
+        
     }
   
-    public MapModel getSimpleModel() {
-        return simpleModel;
+    public MapModel getAdvancedModel() {
+        return advancedModel;
     }
     
     @SuppressWarnings("unused")
 	public void onGeocode(GeocodeEvent event) {
     	 List<GeocodeResult> results = event.getResults();
     }
+      
+    public void onMarkerSelect(OverlaySelectEvent event) {
+    	marker = (Marker) event.getOverlay();
+    	
+    	String [] temp = mapMarker.get(marker.getTitle());
+    	markerEx = new MarkerEx( marker.getLatlng(), marker.getTitle() );
+    	markerEx.setRazaoSocial(temp[0]);
+    	markerEx.setVagas(temp[1]);
+    	markerEx.setLogradouro(temp[2]);
+    	markerEx.setNumero(temp[3]);
+    	markerEx.setBairro(temp[4]);
+    	markerEx.setCep(temp[5]);
+    }
+      
+    public Marker getMarker() {
+        return marker;
+    }
+
+	public MarkerEx getMarkerEx() {
+		return markerEx;
+	}
     
 }

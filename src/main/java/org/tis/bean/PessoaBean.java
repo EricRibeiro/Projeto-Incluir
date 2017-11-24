@@ -15,6 +15,7 @@ public class PessoaBean {
 	@Inject
 	private PessoaDao pessoaDao;
 	
+	@SuppressWarnings("unused")
 	@Inject 
 	private LoginPessoaBean loginPessoaBean;
 	
