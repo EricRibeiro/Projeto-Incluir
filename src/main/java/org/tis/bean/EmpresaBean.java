@@ -17,13 +17,13 @@ public class EmpresaBean {
 	
 	@Transactional
 	public String salvar(){
+
         if (empresaDao.nmDeUsuarioEstaDisponivel(empresa.getLogin())) {
             empresaDao.salvar(empresa);
             return "/empresa/login-empresa?persisted=true&faces-redirect=true";
         } else {
             return "/empresa/cadastra-empresa?usuario-disponivel=false&faces-redirect=true";
         }
-		
 	}
 	
 	@Transactional
